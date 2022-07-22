@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  {% for obj in purpose %}
+    <article class="max-w-6xl px-6 py-24 mx-auto space-y-1 even:list-decimal odd:list-decimal">
+      {{obj.content|safe}}
+    </article>
+  {% endfor %}
+{% endblock content %}

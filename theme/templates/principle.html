@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% for prof in obj %}
+    <section class="text-gray-600 body-font">
+      <div class="container mx-auto flex flex-col px-5 pt-24 justify-center items-center">
+        <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-3 object-cover object-center rounded" alt="hero" src="{{prof.image.url}}">
+        <div class="w-full md:w-2/3 flex flex-col mb-10 items-center text-center">
+          <h1 class="title-font sm:text-2xl text-2xl mb-4 font-medium text-gray-300">Chair Professor</h1>
+          <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{prof.name}}</h1>
+          <p class="mb-3 leading-relaxed">{{prof.greeting|safe}}</p>
+          <div class="flex">
+            <div class="text-center">
+              <div class="mb-2 text-blueGray-600 mt-10">
+                <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>{{prof.position}}
+              </div>
+              <div class="mb-2 text-blueGray-600">
+                <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>{{prof.office}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+        <div class="grid row-gap-8 sm:grid-cols-3">
+          <div class="text-center pt-5">
+            <h6 class="text-2xl font-bold text-deep-purple-accent-400">{{prof.phone}}</h6>
+            <p class="font-bold">Phone</p>
+          </div>
+          <div class="text-center pt-5">
+            <h6 class="text-2xl font-bold text-deep-purple-accent-400">{{prof.fax}}</h6>
+            <p class="font-bold">Fax</p>
+          </div>
+          <div class="text-center pt-5">
+            <h6 class="text-2xl font-bold text-deep-purple-accent-400">{{prof.email}}</h6>
+            <p class="font-bold">E-mail</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ol class="relative border-l border-gray-200 dark:border-gray-700 max-w-5xl mx-auto mt-20">
+      {% for timeline in prof.timeline.all %}
+        <li class="mb-10 ml-4">
+          <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+          <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{{timeline.date|date:'F Y'}}</time>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{timeline.title}}</h3>
+          <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{{timeline.description}}</p>
+
+        </li>
+      {% endfor %}
+      <li class="mb-10 ml-4">
+        <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">March 2022</time>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Marketing UI design in Figma</h3>
+        <p class="text-base font-normal text-gray-500 dark:text-gray-400">All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project.</p>
+      </li>
+      <li class="ml-4">
+        <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">April 2022</time>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">E-Commerce UI code in Tailwind CSS</h3>
+        <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web components and interactive elements built on top of Tailwind CSS.</p>
+      </li>
+    </ol>
+
+  {% endfor %}
+{% endblock content %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+    <div class="p-1.5 w-full sm:w-auto overflow-hidden bg-white border rounded-lg ">
+      <div class="space-y-2 sm:space-y-0 sm:flex sm:-mx-1">
+        <a class="w-full px-4 py-1 text-white transition-colors duration-200 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40 LabBtn" href={% url 'post_list' 'default' %}>
+          All
+        </a>
+        <a class="w-full px-4 py-1 text-white transition-colors duration-200 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40 LabBtn" href={% url 'post_list' 'news' %}>
+          News
+        </a>
+
+        <a class="w-full px-4 py-1 text-white transition-colors duration-200 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40 AlBtn" href={% url 'post_list' 'research' %}>
+          Research
+        </a>
+
+      </div>
+    </div>
+    <div class="mb-10 border-t border-b divide-y">
+      {% for obj in posts %}
+        <div class="grid py-8 sm:grid-cols-4">
+          <div class="mb-4 sm:mb-0">
+            <div class="space-y-1 text-xs font-semibold tracking-wide uppercase">
+              <a href="/" class="transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800" aria-label="Category">{{obj.category}}</a>
+              <p class="text-gray-600">{{obj.created_at|date:'d M Y'}}</p>
+            </div>
+          </div>
+          <div class="sm:col-span-3 lg:col-span-2">
+            <div class="mb-3">
+              <a href="{% url 'post_detail' obj.id %}" aria-label="Article" class="inline-block text-black transition-colors duration-200 hover:text-deep-purple-accent-700 hover:text-gray-500">
+                <p class="text-3xl font-extrabold leading-none sm:text-4xl xl:text-4xl">
+                  {{obj.title}}
+                </p>
+              </a>
+            </div>
+            <p class="text-gray-700">
+              {{obj.descirption}}
+            </p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- component -->
+
+{% endblock content %}
