@@ -2,7 +2,7 @@
 
 {% block content %}
 
-  <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+  <div class="px-4  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24">
     <div class="p-1.5 w-full sm:w-auto overflow-hidden bg-white border rounded-lg ">
       <div class="space-y-2 sm:space-y-0 sm:flex sm:-mx-1">
         <a class="w-full px-4 py-1 text-white transition-colors duration-200 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40 LabBtn" href={% url 'post_list' 'default' %}>
@@ -18,32 +18,39 @@
 
       </div>
     </div>
-    <div class="mb-10 border-t border-b divide-y">
-      {% for obj in posts %}
-        <div class="grid py-8 sm:grid-cols-4">
-          <div class="mb-4 sm:mb-0">
-            <div class="space-y-1 text-xs font-semibold tracking-wide uppercase">
-              <a href="/" class="transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800" aria-label="Category">{{obj.category}}</a>
-              <p class="text-gray-600">{{obj.created_at|date:'d M Y'}}</p>
-            </div>
-          </div>
-          <div class="sm:col-span-3 lg:col-span-2">
-            <div class="mb-3">
-              <a href="{% url 'post_detail' obj.id %}" aria-label="Article" class="inline-block text-black transition-colors duration-200 hover:text-deep-purple-accent-700 hover:text-gray-500">
-                <p class="text-3xl font-extrabold leading-none sm:text-4xl xl:text-4xl">
-                  {{obj.title}}
-                </p>
-              </a>
-            </div>
-            <p class="text-gray-700">
-              {{obj.descirption}}
+    <section class="px-4 py-24 mx-auto max-w-7xl">
+
+      <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+        {% for obj in posts %}
+          <div>
+            <a href="{% url 'post_detail' obj.id %}">
+              <img src="{{obj.thumbnail.url}}" class="object-cover w-full h-56 mb-5 bg-center rounded" alt="Kutty" loading="lazy"/>
+            </a>
+            <h2 class="mb-2 text-lg font-semibold text-gray-900">
+              <a href="#" class="text-gray-900 hover:text-purple-700 overflow-ellipsis">{{obj.title}}</a>
+            </h2>
+            <p class="mb-3 text-sm font-normal text-gray-500">
+              {{obj.description}}
+            </p>
+            <p class="mb-3 text-sm font-normal text-gray-500">
+              <a href="#" class="font-medium text-gray-900 hover:text-purple-700">admin</a>
+              {{obj.created_at|date:'d F, Y'}}
             </p>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+
+      </section>
+      <div class="flex flex-col items-center justify-center mt-20 space-x-0 space-y-2 md:space-x-2 md:space-y-0 md:flex-row mb-10">
+        {% if page_obj.has_previous %}
+          <a href="?page={{page_obj.previous_page_number}}" class="w-full rounded-full btn btn-light btn-xl md:w-auto">Previous Page</a>
+        {% endif %}
+        {% if page_obj.has_next %}
+          <a href="?page={{page_obj.next_page_number}}" class="w-full rounded-full btn btn-light btn-xl md:w-auto">Next Page</a>
+        {% endif %}
+      </div>
+
     </div>
-  </div>
 
-  <!-- component -->
+    <!-- component -->
 
-{% endblock content %}
+  {% endblock content %}
