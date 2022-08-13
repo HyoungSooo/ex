@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <head>
+    <link rel="stylesheet" href="{% static 'css/dist/newsstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dist/default.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dist/aos.css' %}">
+  </head>
+
+  <body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0" cz-shortcut-listen="true">
+    <script>
+      AOS.init();
+    </script>
+    <div id="wrap">
+
+      <!--header -->
+      <div id="header">
+        <!-- 본문시작 -->
+        <div id="sub_conWr">
+          <style>
+            #bo_cate.cate_line ul {
+              padding: 15px 14%;
+            }
+
+            #bo_cate.cate_line a {
+              line-height: 18px !important;
+            }
+
+            @media (max-width:1200px) {
+              #bo_cate.cate_line ul {
+                padding: 15px 8%;
+              }
+            }
+
+            @media (max-width:800px) {
+              #bo_cate.cate_line ul {
+                padding: 15px 0;
+              }
+
+              #bo_cate.cate_line a {
+                line-height: 10px !important;
+                padding: 5px !important;
+              }
+            }
+          </style>
+          <!-- 게시판 목록 시작 { -->
+          <div id="bo_gall" style="width:100%">
+            <nav id="bo_cate" class="cate_line flex justify-center">
+              <ul id="bo_cate_ul">
+                <li>
+                  <a href="{% url 'News' %}">전체</a>
+                </li>
+                <li>
+                  <a href="#">PUBLICATION</a>
+                </li>
+                <li>
+                  <a href="{% url 'Photo' %}" id="bo_cate_on">Photos & Video</a>
+                </li>
+                <li>
+                  <a href="#">News</a>
+                </li>
+                <li>
+                  <a href="#">Research</a>
+                </li>
+
+              </ul>
+            </nav>
+
+            <form name="fboardlist" id="fboardlist" action="http://ool.snu.ac.kr/bbs/board_list_update.php" onsubmit="return fboardlist_submit(this);" method="post">
+              <ul id="gall_ul" class="gall_row">
+                <li class="gall_li col-gn-3">
+                  <div class="gall_box">
+                    <div class="gall_chk chk_box">
+                      <span class="sound_only">
+                        246
+                      </span>
+                    </div>
+                    <div class="gall_con">
+                      <div class="gall_img">
+                        <a href="http://ool.snu.ac.kr/bbs/board.php?bo_table=sub5_1&amp;wr_id=248">
+                          <img src="./Photo 1 페이지 _ 서울대학교 해양환경관측연구실_files/thumb-75f97a60cc6d8cb6c02ad91c54148e29_1658799622_9079_295x200.jpg" alt="" title="">
+                        </a>
+                      </div>
+                      <div class="gall_text_href">
+                        <a href="http://ool.snu.ac.kr/bbs/board.php?bo_table=sub5_1&amp;wr_id=248" class="bo_tit">
+
+                          <!-- 갤러리 댓글기능 사용시 주석을 제거하세요. -->
+
+                          2022 July Cruise (R/V ISABU)
+                        </a>
+
+                      </div>
+
+                      <div class="gall_info">
+                        <span class="gall_date"><span class="sound_only">작성일
+                          </span>
+                          <i class="fa fa-clock-o" aria-hidden="true"></i>
+                          2022-07-26</span>
+                        <!--<span class="gall_view"><span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 21</span>-->
+                      </div>
+                      <div class="gall_option"></div>
+                    </div>
+                  </div>
+                </li>
+                <li class="gall_li col-gn-3">
+                  <div class="gall_box">
+                    <div class="gall_chk chk_box">
+                      <span class="sound_only">
+                        246
+                      </span>
+                    </div>
+                    <div class="gall_con">
+                      <div class="gall_img">
+                        <a href="http://ool.snu.ac.kr/bbs/board.php?bo_table=sub5_1&amp;wr_id=248">
+                          <img src="{% static 'image/img.jpg' %}" alt="" title="">
+                        </a>
+                      </div>
+                      <div class="gall_text_href">
+                        <a href="http://ool.snu.ac.kr/bbs/board.php?bo_table=sub5_1&amp;wr_id=248" class="bo_tit">
+
+                          <!-- 갤러리 댓글기능 사용시 주석을 제거하세요. -->
+
+                          2022 July Cruise (R/V ISABU)
+                        </a>
+
+                      </div>
+
+                      <div class="gall_info">
+                        <span class="gall_date"><span class="sound_only">작성일
+                          </span>
+                          <i class="fa fa-clock-o" aria-hidden="true"></i>
+                          2022-07-26</span>
+                        <!--<span class="gall_view"><span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 21</span>-->
+                      </div>
+                      <div class="gall_option"></div>
+                    </div>
+                  </div>
+                </li>
+                <li class="gall_li col-gn-3">
+                  <div class="gall_box">
+                    <div class="gall_chk chk_box">
+                      <span class="sound_only">
+                        246
+                      </span>
+                    </div>
+                    <div class="gall_con">
+                      <div class="gall_img">
+                        <a href="http://ool.snu.ac.kr/bbs/board.php?bo_table=sub5_1&amp;wr_id=248">
+                          <img src="./Photo 1 페이지 _ 서울대학교 해양환경관측연구실_files/thumb-75f97a60cc6d8cb6c02ad91c54148e29_1658799622_9079_295x200.jpg" alt="" title="">
+                        </a>
+                      </div>
+                      <div class="gall_text_href">
+                        <a href="http://ool.snu.ac.kr/bbs/board.php?bo_table=sub5_1&amp;wr_id=248" class="bo_tit">
+
+                          <!-- 갤러리 댓글기능 사용시 주석을 제거하세요. -->
+
+                          2022 July Cruise (R/V ISABU)
+                        </a>
+
+                      </div>
+
+                      <div class="gall_info">
+                        <span class="gall_date"><span class="sound_only">작성일
+                          </span>
+                          <i class="fa fa-clock-o" aria-hidden="true"></i>
+                          2022-07-26</span>
+                        <!--<span class="gall_view"><span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 21</span>-->
+                      </div>
+                      <div class="gall_option"></div>
+                    </div>
+                  </div>
+                </li>
+
+              </ul>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </link>
+</body>
+
+{% endblock content %}

@@ -38,7 +38,7 @@
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.min.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/dist/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/dist/style.css' %}">
   </head>
 
@@ -204,7 +204,7 @@
 
               <!-- Links -->
               <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto">
-                <a href="{% url 'index' %}" class="flex items-center space-x-2 text-indigo-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub">
+                <a href="{% url 'index' %}" class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub">
                   <span aria-hidden="true" class="p-2 rounded-lg">
                     <svg
                       class="w-6 h-6"
@@ -224,8 +224,8 @@
                   <span>Home</span>
                 </a>
                 <a
-                  href="{% url 'principle' 'default' %}"
-                  class="flex items-center space-x-2 text-indigo-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
+                  href="{% url 'prof_list'  %}"
+                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
                 >
                   <span
                     aria-hidden="true"
@@ -246,11 +246,11 @@
                       />
                     </svg>
                   </span>
-                  <span>교수님 소개</span>
+                  <span>교수진 소개</span>
                 </a>
                 <a
                   href="{% url 'purpose' %}"
-                  class="flex items-center space-x-2 text-indigo-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
+                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
                 >
                   <span
                     aria-hidden="true"
@@ -271,11 +271,11 @@
                       />
                     </svg>
                   </span>
-                  <span>소개</span>
+                  <span>연구실 소개</span>
                 </a>
                 <a
                   href="{% url 'team' 'LA' %}"
-                  class="flex items-center space-x-2 text-indigo-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
+                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
                 >
                   <span
                     aria-hidden="true"
@@ -299,8 +299,8 @@
                   <span>멤버</span>
                 </a>
                 <a
-                  href="{% url 'post_list' 'default' %}"
-                  class="flex items-center space-x-2 text-indigo-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
+                  href="{% url 'News' %}"
+                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
                 >
                   <span
                     aria-hidden="true"
@@ -324,8 +324,34 @@
                   <span>게시판</span>
                 </a>
                 <a
+                <a
+                  href="{% url 'News' %}"
+                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </span>
+                  <span>일정</span>
+                </a>
+                <a
                   href="{% url 'publications'  %}"
-                  class="flex items-center space-x-2 text-indigo-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
+                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
                 >
                   <span
                     aria-hidden="true"

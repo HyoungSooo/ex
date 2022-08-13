@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <link rel="stylesheet" href="{% static 'css/dist/newsstyle.css' %}">
+  <link rel="stylesheet" href="{% static 'css/dist/default.css' %}">
+  <link rel="stylesheet" href="{% static 'css/dist/aos.css' %}">
+
+  <body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0" cz-shortcut-listen="true">
+    <script>
+      AOS.init();
+    </script>
+    <div id="wrap">
+
+      <!--header -->
+      <div id="header">
+
+        <!-- 콘텐츠 시작 { -->
+        <div id="subWr" class="w1400 cbdb">
+          <style>
+            #bo_cate.cate_line ul {
+              padding: 15px 14%;
+            }
+
+            #bo_cate.cate_line a {
+              line-height: 18px !important;
+            }
+
+            @media (max-width:1200px) {
+              #bo_cate.cate_line ul {
+                padding: 15px 8%;
+              }
+            }
+
+            @media (max-width:800px) {
+              #bo_cate.cate_line ul {
+                padding: 15px 0;
+              }
+
+              #bo_cate.cate_line a {
+                line-height: 10px !important;
+                padding: 5px !important;
+              }
+            }
+          </style>
+          <div id="sub_conWr">
+
+            <div id="bo_list" style="width:100%">
+              <nav id="bo_cate" class="cate_line flex justify-center">
+                <ul id="bo_cate_ul">
+                  <li>
+                    <a href="{% url 'News' %}" id="bo_cate_on">전체</a>
+                  </li>
+                  <li>
+                    <a href="#">PUBLICATION</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'Photo' %}">Photos & Video</a>
+                  </li>
+                  <li>
+                    <a href="#">News</a>
+                  </li>
+                  <li>
+                    <a href="#">Research</a>
+                  </li>
+
+                </ul>
+              </nav>
+              <!-- } 게시판 카테고리 끝 -->
+
+              <form name="fboardlist" id="fboardlist" action="http://ool.snu.ac.kr/bbs/board_list_update.php" onsubmit="return fboardlist_submit(this);" method="post">
+                <!-- } 게시판 페이지 정보 및 버튼 끝 -->
+
+                <div class="tbl_head01 tbl_wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th scope="col" width="10%">번호</th>
+                        <th scope="col" width="70%">제목</th>
+                        <th scope="col" class="rep" width="10%">글쓴이</th>
+                        <!-- <th scope="col"><a href="/bbs/board.php?bo_table=sub5_4&amp;sop=and&amp;sst=wr_hit&amp;sod=desc&amp;sfl=&amp;stx=&amp;sca=&amp;page=1">조회 </a></th>-->
+                        <th scope="col" class="rep" width="10%">
+                          <a href="http://ool.snu.ac.kr/bbs/board.php?bo_table=sub5_4&amp;sop=and&amp;sst=wr_datetime&amp;sod=desc&amp;sfl=&amp;stx=&amp;sca=&amp;page=1">날짜
+                          </a>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="even">
+                        <td class="td_num2">
+                          272
+                        </td>
+
+                        <td class="td_subject" style="padding-left:0px">
+                          <a href='#' class="bo_cate_link">OUTREACH</a>
+
+                          <div class="bo_tit ">
+                            <a href="http://ool.snu.ac.kr/bbs/board.php?bo_table=sub5_4&amp;wr_id=295">
+                              Professor Nam's lecture at Extension College SNU
+                            </a>
+                            <i class="fa fa-link" aria-hidden="true"></i>
+                          </div>
+                          <div class="rep_info">
+                            <span class="name"><span class="sv_member">OOL</span></span>
+                            <span class="date">2022-07-27</span>
+                          </div>
+                        </td>
+                        <td class="td_name sv_use rep">
+                          <span class="sv_member">OOL</span></td>
+                        <!-- <td class="td_num">38</td>-->
+                        <td class="td_datetime rep">2022-07-27</td>
+
+                      </tbody>
+                    </table>
+                  </div>
+
+                </form>
+
+                <!-- } 게시판 목록 끝 -->
+
+              </div>
+              <!-- //본문끝 -->
+            </div>
+            <!-- } 콘텐츠 끝 -->
+
+          </div>
+
+          <!-- } 하단 끝 -->
+
+          <script>
+            $(function () {
+              // 폰트 리사이즈 쿠키있으면 실행
+              font_resize("container", get_cookie("ck_font_resize_rmv_class"), get_cookie("ck_font_resize_add_class"));
+            });
+          </script>
+
+          <!-- ie6,7에서 사이드뷰가 게시판 목록에서 아래 사이드뷰에 가려지는 현상 수정 -->
+          <!--[if lte IE 7]> <script> $(function() { var $sv_use = $(".sv_use"); var count = $sv_use.length; $sv_use.each(function() { $(this).css("z-index", count); $(this).css("position", "relative"); count = count - 1; }); }); </script> <![endif]-->
+
+          <!-- 사용스킨 : basic -->
+        </body>
+
+      {% endblock content %}
