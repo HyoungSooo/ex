@@ -11,6 +11,7 @@
     <!-- image slider -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer="defer"></script>
 
 
     <!-- Tailwind -->
@@ -41,6 +42,17 @@
     <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/dist/style.css' %}">
   </head>
+  <style>
+    .example::-webkit-scrollbar {
+      display: none;
+    }
+
+    .example {
+      -ms-overflow-style: none;  /* IE and 엣지 */
+      scrollbar-width: none;  /* 파이어폭스 */
+    }
+
+  </style>
 
   <body class="bg-white font-family-karla ">
     <!-- component -->
@@ -223,8 +235,8 @@
                   </span>
                   <span>Home</span>
                 </a>
-                <a
-                  href="{% url 'prof_list'  %}"
+                 <a
+                  href="{% url 'RA'  %}"
                   class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
                 >
                   <span
@@ -246,9 +258,34 @@
                       />
                     </svg>
                   </span>
-                  <span>교수진 소개</span>
+                  <span>관심분야</span>
                 </a>
                 <a
+                  href="{% url 'project' %}"
+                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </span>
+                  <span>Project</span>
+                </a>
+                {% comment %} <a
                   href="{% url 'purpose' %}"
                   class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
                 >
@@ -272,9 +309,9 @@
                     </svg>
                   </span>
                   <span>연구실 소개</span>
-                </a>
+                </a> {% endcomment %}
                 <a
-                  href="{% url 'team' 'LA' %}"
+                  href="{% url 'principle' 'default' %}"
                   class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
                 >
                   <span
@@ -296,8 +333,63 @@
                       />
                     </svg>
                   </span>
-                  <span>멤버</span>
+                  <span>교수진 소개</span>
+                  
                 </a>
+                <a
+                  href="{% url 'team' 'PhD' %}"
+                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </span>
+                  <span>구성원 소개</span>
+                </a>
+                <a
+                  href="{% url 'journal' 'default' %}"
+                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </span>
+                  <span>연구 실적</span>
+                </a>
+                
+                
+               
+                
                 <a
                   href="{% url 'News' %}"
                   class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
@@ -349,32 +441,6 @@
                   </span>
                   <span>일정</span>
                 </a>
-                <a
-                  href="{% url 'publications'  %}"
-                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
-                >
-                  <span
-                    aria-hidden="true"
-                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
-                  >
-                    <svg
-                      class="w-6 h-6"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </span>
-                  <span>성과</span>
-                </a>
-                
               </div>
             </nav>
 
@@ -387,8 +453,8 @@
             </section>
           </div>
         </div>
-        <div class="flex flex-col flex-1 md:pt-10">
-          <div class="overflow-scroll block_">
+        <div class="flex flex-col flex-1 max-h-screen h-screen overflow-hidden">
+          <div class="overflow-scroll block example bg-inherit ">
             <!-- Main -->
             <main class="px-4 py-8">
               {% block content %}{% endblock content %}

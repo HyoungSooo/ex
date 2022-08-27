@@ -2,77 +2,75 @@
 {% load static %}
 
 {% block content %}
-
-  <section class="">
-    <div class="container px-6 py-10 mx-auto">
-      <h1 class="text-3xl font-semibold text-center text-gray-800 capitalize lg:text-4xl ">멤버</h1>
-
-      <p class="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-300"></p>
-
+  <!-- component -->
+  <section class="max-w-full mx-auto px-4 sm:px-6 lg:px-4 pb-12">
+    <div class="text-center py-10 ">
+      <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
+        Lab Members
+      </h1>
     </div>
-
-    <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4 Lab">
-      {% if LA %}
-        {% for obj in professor %}
-          <div class="flex flex-col items-center p-8 transition-colors duration-200 transform cursor-pointer group hover:bg-blue-600 rounded-xl">
-            <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="{{ obj.image.url }}" alt="">
-
-            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize  group-hover:text-white">{{ obj.name }}</h1>
-
-            <p class="mt-2 text-gray-500 capitalize  group-hover:text-gray-300">{{ obj.position }}</p>
-
+    <!-- component -->
+    <section class="container mx-auto px-6 my-1 flex flex-wrap -m-4 pb-20 justify-center">
+      <div class="p-2 md:w-40 ">
+        <a href="{% url 'team' 'PhD' %}" class="flex items-center p-4 bg-green-200 rounded-lg shadow-xs cursor-pointer hover:bg-green-500 hover:text-gray-100 justify-center">
+          <div>
+            <p class=" text-xs font-medium ml-2 ">
+              PH.d
+            </p>
           </div>
-
-        {% endfor %}
-        {% for obj in phd %}
-          <div class="flex flex-col items-center p-8 transition-colors duration-200 transform cursor-pointer group hover:bg-blue-600 rounded-xl">
-            <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="{{ obj.image.url }}" alt="">
-
-            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize  group-hover:text-white">{{ obj.name }}</h1>
-
-            <p class="mt-2 text-gray-500 capitalize  group-hover:text-gray-300">{{ obj.position }}</p>
-
+        </a>
+      </div>
+      <div class="p-2 md:w-40 ">
+        <a href="{% url 'team' 'MS' %}" class="flex items-center p-4 bg-yellow-200 rounded-lg shadow-xs cursor-pointer hover:bg-yellow-500 hover:text-gray-100 justify-center">
+          <div>
+            <p class=" text-xs font-medium ml-2 ">
+              MS
+            </p>
           </div>
-
-        {% endfor %}
-        {% for obj in ms %}
-          <div class="flex flex-col items-center p-8 transition-colors duration-200 transform cursor-pointer group hover:bg-blue-600 rounded-xl">
-            <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="{{ obj.image.url }}" alt="">
-
-            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">{{ obj.name }}</h1>
-
-            <p class="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">{{ obj.position }}</p>
-
+        </a>
+      </div>
+      <div class="p-2 md:w-40 ">
+        <a href="{% url 'team' 'Undergraduate' %}" class="flex items-center p-4 bg-blue-200 rounded-lg shadow-xs cursor-pointer hover:bg-blue-500 hover:text-gray-100 justify-center">
+          <div>
+            <p class=" text-xs font-medium ml-2 ">
+              Undergraduated
+            </p>
           </div>
-
-        {% endfor %}
-        {% for obj in undergraduate %}
-          <div class="flex flex-col items-center p-8 transition-colors duration-200 transform cursor-pointer group hover:bg-blue-600 rounded-xl">
-            <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="{{ obj.image.url }}" alt="">
-
-            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">{{ obj.name }}</h1>
-
-            <p class="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">{{ obj.position }}</p>
-
-          </div>
-
-        {% endfor %}
-      {% else %}
-        {% for obj in alumni %}
-          <div class="flex flex-col items-center p-8 transition-colors duration-200 transform cursor-pointer group hover:bg-blue-600 rounded-xl">
-            <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="{{ obj.image.url }}" alt="">
-
-            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">{{ obj.name }}</h1>
-
-            <p class="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">Alumni</p>
-
-          </div>
-
-        {% endfor %}
+        </a>
       </div>
 
-    {% endif %}
-  </div>
-</section>
+    </section>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- component -->
+      {% for obj in about_us %}
+        <a href="{% url 'teamDetail' obj.id %}">
+          <div class="font-sans h-96 w-full flex flex-row justify-center items-center">
+            <div class="card w-full mx-auto bg-white shadow-xl hover:shadow">
+              <img class="w-32 mx-auto rounded-full -mt-20 border-8 border-white" src="{{obj.image.url}}" alt="">
+              <div class="text-center mt-2 text-3xl font-medium">{{obj.name}}</div>
+              <div class="text-center mt-2 font-light text-sm">@{{obj.position}}</div>
+              <div class="text-center font-normal text-base pt-5">Education</div>
+              <div class="px-6 text-center mt-2 font-light text-sm">
+                <p>
+                  {{obj.headerEx}}
+                </p>
+              </div>
+              <hr class="mt-8">
+              <div class="flex p-4">
+                <div class="w-1/2 text-center text-sm">
+                  <span class="font-bold">Phone</span>
+                  {{obj.phone}}
+                </div>
+                <div class="w-0 border border-gray-300 "></div>
+                <div class="w-1/2 text-center text-sm">
+                  {{obj.email}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
 
+    </div>
+  </section>
 {% endblock content %}

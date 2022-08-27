@@ -1,9 +1,13 @@
 
+
+from datetime import date
+
 from django.shortcuts import render
+from django.http import Http404
 
 from django.views.generic import View, ListView, DetailView, TemplateView
 
-from core.models import Post, Purpose, Professor, Timeline, AboutUs, Publictions
+from core.models import Post, Purpose, Professor, Timeline, AboutUs, Publications, ResearchArena, Project
 
 # Create your views here.
 
@@ -13,38 +17,14 @@ class AboutView(ListView):
     template_name = 'team.html'
     context_object_name = 'about_us'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if self.kwargs.get('category') == 'LA':
-            context['professor'] = AboutUs.objects.filter(
-                position='Professor').order_by('name')
-            context['phd'] = AboutUs.objects.filter(
-                position='PhD').order_by('name')
-            context['ms'] = AboutUs.objects.filter(
-                position='MS').order_by('name')
-            context['undergraduate'] = AboutUs.objects.filter(
-                position='Undergraduate').order_by('name')
-            context['LA'] = True
-        else:
-            context['alumni'] = AboutUs.objects.filter(
-                category='AL').order_by('name')
-            context['LA'] = False
-        return context
-
-
-class PurposeView(ListView):
-    model = Purpose
-    template_name = 'purpose.html'
-    context_object_name = 'purpose'
-
     def get_queryset(self):
-        return Purpose.objects.all().first()
+        return AboutUs.objects.filter(position=self.kwargs['category'])
 
 
-class PublicationsView(ListView):
-    model = Publictions
-    template_name = 'publications.html'
-    context_object_name = 'publictions'
+# class PublicationsView(ListView):
+#     model = Publictions
+#     template_name = 'publications.html'
+#     context_object_name = 'publictions'
 
 
 class PrincipleView(ListView):
@@ -100,3 +80,73 @@ class IndexView(TemplateView):
         context["News"] = Post.objects.filter(
             category='News').order_by('-created_at')[:5]
         return context
+
+
+class ResearchArenaView(ListView):
+    template_name = 'researcharena.html'
+    model = ResearchArena
+    context_object_name = 'obj'
+
+
+class ResearchArenaDetailView(DetailView):
+    template_name = 'research.html'
+    model = ResearchArena
+    context_object_name = 'purpose'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["list"] = ResearchArena.objects.all()
+
+        return context
+
+
+class MemberDetailView(DetailView):
+    model = AboutUs
+    template_name = 'memberdetail.html'
+    context_object_name = 'obj'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category = AboutUs.objects.get(id=self.kwargs['pk']).position
+        context['others'] = AboutUs.objects.filter(position=category)
+        return context
+
+
+class PublictionsView(ListView):
+    template_name = 'journal.html'
+    model = Publications
+    context_object_name = 'obj'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.kwargs['category'] == 'default':
+            data = Publications.objects.all()
+        else:
+            if self.kwargs['category'] in ('Journal', 'Conference', 'Patents'):
+                data = Publications.objects.filter(
+                    category=self.kwargs['category'])
+            else:
+                raise Http404
+        sub = set()
+
+        l = []
+        for i in data:
+            new = False
+            if i.date.year not in sub:
+                new = True
+                sub.add(i.date.year)
+                p = i.date.year
+                context[str(p)] = Publications.objects.filter(
+                    date__gte=date(p, 1, 1), date__lte=date(p, 12, 31))
+
+            if context[str(p)] and new:
+                l.append((str(p), context[str(p)]))
+
+        context['data'] = l
+        return context
+
+
+class ProjectView(ListView):
+    model = Project
+    template_name = 'project.html'
+    context_object_name = 'obj'

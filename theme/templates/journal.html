@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- component -->
+  <style>
+    dialog[open] {
+      animation: appear 0.15s cubic-bezier(0, 1.8, 1, 1.8);
+    }
+
+    dialog::backdrop {
+      background: linear-gradient(45deg, rgba(0, 0, 0, 0.5), rgba(54, 54, 54, 0.5));
+      backdrop-filter: blur(3px);
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateX(-3rem);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+  <!-- component -->
+  <!-- This is an example component -->
+  <section class="max-w-full mx-auto px-4 sm:px-6 lg:px-4 pb-12">
+    <div class="text-center py-10 ">
+      <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
+        Publications
+      </h1>
+    </div>
+    <section class="container mx-auto px-6 my-1 flex flex-wrap -m-4 pb-5 justify-center">
+      <div class="p-2 md:w-40 ">
+        <a href="{% url 'journal' 'default' %}" class="flex items-center p-4 bg-red-200 rounded-lg shadow-xs cursor-pointer hover:bg-red-500 hover:text-gray-100 justify-center">
+          <div>
+            <p class=" text-xs font-medium ml-2 ">
+              All
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="p-2 md:w-40 ">
+        <a href="{% url 'journal' 'Journal' %}" class="flex items-center p-4 bg-green-200 rounded-lg shadow-xs cursor-pointer hover:bg-green-500 hover:text-gray-100 justify-center">
+          <div>
+            <p class=" text-xs font-medium ml-2 ">
+              Journal
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="p-2 md:w-40 ">
+        <a href="{% url 'journal' 'Conference' %}" class="flex items-center p-4 bg-yellow-200 rounded-lg shadow-xs cursor-pointer hover:bg-yellow-500 hover:text-gray-100 justify-center">
+          <div>
+            <p class=" text-xs font-medium ml-2 ">
+              Conference
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="p-2 md:w-40 ">
+        <a href="{% url 'journal' 'Patents' %}" class="flex items-center p-4 bg-blue-200 rounded-lg shadow-xs cursor-pointer hover:bg-blue-500 hover:text-gray-100 justify-center">
+          <div>
+            <p class=" text-xs font-medium ml-2 ">
+              Patents
+            </p>
+          </div>
+        </a>
+      </div>
+
+    </section>
+    {% for obj in data %}
+      <div class="text-left pt-10 pb-3 border-b-4 border-gray-300">
+        <h4 class="font-bold text-2xl md:text-2xl lg:text-2xl font-heading text-gray-900 ">
+          {{obj.0}}
+        </h4>
+      </div>
+      {% comment %} section start {% endcomment %}
+      {% for list in obj.1 %}
+        <div class=' pt-10'>
+          <div class="rounded-xl border p-5 shadow-md bg-white">
+            <div class="flex w-full items-center justify-between border-b pb-3">
+              <div class="flex items-center space-x-3"></div>
+              <div class="flex items-center space-x-4">
+                {% if list.category == 'Journal' %}
+                  <button class="rounded-2xl border border-green-400 text-green-500 bg-neutral-100 px-3 py-1 text-xs   font-semibold">{{list.category}}</button>
+                {% elif list.category == 'Conference' %}
+                  <button class="rounded-2xl border border-yellow-400 text-yellow-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{list.category}}</button>
+                {% else %}
+                  <button class="rounded-2xl border border-blue-400 text-blue-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{list.category}}</button>
+                {% endif %}
+                <button class="rounded-2xl border border-purple-300 text-purple-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{list.date}}</button>
+              </div>  
+            </div>
+      
+            <div class="mt-4 mb-6 min-w-full">
+              <div class="mb-3 text-xl font-bold">{{list.title}}</div>
+              <div class="text-sm text-neutral-600">{% for mem in list.members.all %}{{mem}},  {% endfor %}</div>
+            </div>
+      
+            <div>
+              <div class="flex items-center justify-between text-slate-500">
+                <div class="flex space-x-2 md:space-x-8">
+                  <section class="flex justify-center items-start">
+                    {% if list.link %}
+                    <a href="{{list.link}}">
+                      <button class="py-2 px-5 bg-blue-500 text-white rounded text shadow-xl">Link</button>
+                    </a>
+                    {% endif %}
+                  </section>
+                  <section class="flex justify-center items-start">
+                    {% if list.file %}
+                    <a href="{{list.file.url}}" download>
+                      <button class="py-2 px-5 bg-red-300 text-white rounded text shadow-xl">File</button>
+                    </a>
+                    {% endif %}
+                  </section>
+                  
+                  <section class="flex justify-center items-start">
+                    <button onclick="document.getElementById('{{list.id}}').showModal()" id="btn" class="py-2 px-5 bg-purple-500 text-white rounded text shadow-xl">detail</button>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    {% comment %} section end {% endcomment %}
+      <dialog id="{{list.id}}" class="h-auto w-11/12 md:w-1/2 p-5  bg-white rounded-md ">
+      
+        <div class="flex flex-col w-full h-auto ">
+          <!-- Header -->
+          <div class="flex w-full h-auto justify-center items-center pl-16">
+            <div class="flex w-10/12 h-auto py-3 justify-center items-center text-2xl font-bold">
+              {{list.title}} Detail
+            </div>
+            <div onclick="document.getElementById('{{list.id}}').close();" class="flex w-1/12 h-auto justify-center cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+            <!--Header End-->
+          </div>
+          <!-- Modal Content-->
+          <div class="flex w-full h-auto py-10 px-2 justify-center items-center bg-gray-200 rounded text-center text-gray-500">
+            {{list.detail|safe}}
+          </div>
+          <!-- End of Modal Content-->
+    
+        </div>
+      </dialog>      
+      {% endfor %}
+    {% endfor %}
+
+  </section>
+{% endblock content %}
