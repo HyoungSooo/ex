@@ -1,5 +1,7 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 # Create your models here.
 
 CATEGORY_CHOICES = (
@@ -162,3 +164,12 @@ class Project(models.Model):
         ('Active', 'Active'), ('Completed', 'Completed'), ('Scheduled', 'Scheduled'), ('Pending', 'Pending')))
     start_date = models.DateField()
     end_date = models.DateField(blank=True)
+
+
+class PictureCa(models.Model):
+    image = models.ImageField(
+        upload_to='images/indexPic', blank=None)
+    image_thumbnail = ImageSpecField(source='image',
+                                     processors=[ResizeToFill(800, 400)],
+                                     format='JPEG',
+                                     options={'quality': 60})

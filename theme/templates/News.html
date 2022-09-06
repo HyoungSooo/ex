@@ -50,19 +50,16 @@
               <nav id="bo_cate" class="cate_line flex justify-center">
                 <ul id="bo_cate_ul">
                   <li>
-                    <a href="{% url 'News' %}" id="bo_cate_on">전체</a>
+                    <a href="{% url 'News' 'a' %}">전체</a>
                   </li>
                   <li>
-                    <a href="#">PUBLICATION</a>
+                    <a href="{% url 'Photo' 'photo' %}">Photos & Video</a>
                   </li>
                   <li>
-                    <a href="{% url 'Photo' %}">Photos & Video</a>
+                    <a href="{% url 'News' 'news' %}">News</a>
                   </li>
                   <li>
-                    <a href="#">News</a>
-                  </li>
-                  <li>
-                    <a href="#">Research</a>
+                    <a href="{% url 'News' 'research' %}">Research</a>
                   </li>
 
                 </ul>
@@ -76,7 +73,7 @@
                   <table>
                     <thead>
                       <tr>
-                        <th scope="col" width="10%">번호</th>
+                        <th scope="col" width="10%">분류</th>
                         <th scope="col" width="70%">제목</th>
                         <th scope="col" class="rep" width="10%">글쓴이</th>
                         <!-- <th scope="col"><a href="/bbs/board.php?bo_table=sub5_4&amp;sop=and&amp;sst=wr_hit&amp;sod=desc&amp;sfl=&amp;stx=&amp;sca=&amp;page=1">조회 </a></th>-->
@@ -86,33 +83,36 @@
                         </th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr class="even">
-                        <td class="td_num2">
-                          272
-                        </td>
+                    {% for obj in posts %}
+                      <tbody>
+                        <tr class="even">
+                          <td class="td_num2">
+                            {{obj.category}}
+                          </td>
 
-                        <td class="td_subject" style="padding-left:0px">
-                          <a href='#' class="bo_cate_link">OUTREACH</a>
+                          <td class="td_subject" style="padding-left:0px">
+                            <div class="bo_tit ">
+                              <a href="#">
+                                {{obj.title}}
+                              </a>
+                            </div>
+                          </td>
+                          <td class="td_name sv_use rep">
+                            <span class="sv_member">Admin</span></td>
+                          <!-- <td class="td_num">38</td>-->
+                          <td class="td_datetime rep">{{obj.created_at|date:'Y M D'}}</td>
 
-                          <div class="bo_tit ">
-                            <a href="#">
-                              Professor Nam's lecture at Extension College SNU
-                            </a>
-                            <i class="fa fa-link" aria-hidden="true"></i>
-                          </div>
-                          <div class="rep_info">
-                            <span class="name"><span class="sv_member">OOL</span></span>
-                            <span class="date">2022-07-27</span>
-                          </div>
-                        </td>
-                        <td class="td_name sv_use rep">
-                          <span class="sv_member">OOL</span></td>
-                        <!-- <td class="td_num">38</td>-->
-                        <td class="td_datetime rep">2022-07-27</td>
-
-                      </tbody>
+                        </tbody>
+                      {% endfor %}
                     </table>
+                  </div>
+                  <div class="flex flex-col items-center justify-center mt-20 space-x-0 space-y-2 md:space-x-2 md:space-y-0 md:flex-row mb-10">
+                    {% if page_obj.has_previous %}
+                      <a href="?page={{page_obj.previous_page_number}}" class="w-full rounded-full btn btn-light btn-xl md:w-auto">Previous Page</a>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                      <a href="?page={{page_obj.next_page_number}}" class="w-full rounded-full btn btn-light btn-xl md:w-auto">Next Page</a>
+                    {% endif %}
                   </div>
 
                 </form>

@@ -3,3 +3,4 @@ django-tailwind
 django-ckeditor
 pillow
 django-seed
+django-imagekit

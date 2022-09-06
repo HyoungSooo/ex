@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Project, Purpose, Professor, Timeline, AboutUs, Publications, ResearchArena, MembersTimeline, ProfTimeline
+from .models import Post, Project, Purpose, Professor, Timeline, AboutUs, Publications, ResearchArena, MembersTimeline, PictureCa, ProfTimeline
 
 admin.site.register(Post)
 admin.site.register(Purpose)
@@ -11,3 +11,4 @@ admin.site.register(ResearchArena)
 admin.site.register(ProfTimeline)
 admin.site.register(MembersTimeline)
 admin.site.register(Project)
+admin.site.register(PictureCa)

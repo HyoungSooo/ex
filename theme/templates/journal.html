@@ -108,12 +108,20 @@
                     <a href="{{list.link}}">
                       <button class="py-2 px-5 bg-blue-500 text-white rounded text shadow-xl">Link</button>
                     </a>
+                    {% else %}
+                    <a href="{{list.link}}">
+                      <button class="py-2 px-5 bg-gray-500 text-white rounded text shadow-xl" disabled>Link</button>
+                    </a>
                     {% endif %}
                   </section>
                   <section class="flex justify-center items-start">
                     {% if list.file %}
                     <a href="{{list.file.url}}" download>
                       <button class="py-2 px-5 bg-red-300 text-white rounded text shadow-xl">File</button>
+                    </a>
+                    {% else %}
+                    <a href="#">
+                      <button class="py-2 px-5 bg-gray-500 text-white rounded text shadow-xl" disabled>File</button>
                     </a>
                     {% endif %}
                   </section>

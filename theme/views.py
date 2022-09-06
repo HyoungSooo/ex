@@ -7,7 +7,7 @@ from django.http import Http404
 
 from django.views.generic import View, ListView, DetailView, TemplateView
 
-from core.models import Post, Purpose, Professor, Timeline, AboutUs, Publications, ResearchArena, Project
+from core.models import Post, Purpose, Professor, Timeline, AboutUs, Publications, ResearchArena, Project, PictureCa, ProfTimeline
 
 # Create your views here.
 
@@ -59,15 +59,17 @@ class PostDetailView(DetailView):
 
 class PostListView(ListView):
     model = Post
-    template_name = 'post_list.html'
+    template_name = 'News.html'
     context_object_name = 'posts'
-    paginate_by = 9
+    paginate_by = 20
 
     def get_queryset(self):
         if self.kwargs['category'] == 'news':
             return Post.objects.filter(category='News').order_by('-created_at')
         elif self.kwargs['category'] == 'research':
             return Post.objects.filter(category='Research').order_by('-created_at')
+        elif self.kwargs['category'] == 'photo':
+            return Post.objects.exclude(thumbnail='')
         else:
             return Post.objects.all().order_by('-created_at')
 
@@ -79,6 +81,7 @@ class IndexView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["News"] = Post.objects.filter(
             category='News').order_by('-created_at')[:5]
+        context["pic"] = PictureCa.objects.all()
         return context
 
 
