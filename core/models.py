@@ -7,13 +7,39 @@ from imagekit.processors import ResizeToFill
 CATEGORY_CHOICES = (
     ('News', 'Ne'),
     ('Research', 'Re'),
+    ('Outstanding', 'Os')
 )
 
 
 class Post(models.Model):
+
+    @property
+    def short_des(self):
+        return 'this is some comment'
+
+    short_des.fget.short_description = '적용 위치'
+
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
+    title = models.CharField(max_length=100, unique=True, blank=False)
+    content = RichTextUploadingField()
+    descirption = models.CharField(max_length=100, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+
+class PhotoVedio(models.Model):
+
+    @property
+    def short_des(self):
+        return 'this is some comment'
+
+    short_des.fget.short_description = '적용 위치'
+
     thumbnail = models.ImageField(
         upload_to='post_images', blank=True, default='images/img.jpg')
-    category = models.CharField(max_length=8, choices=CATEGORY_CHOICES)
     title = models.CharField(max_length=100, unique=True, blank=False)
     content = RichTextUploadingField()
     descirption = models.CharField(max_length=100, blank=True)
@@ -31,6 +57,13 @@ class Purpose(models.Model):
 
 
 class Professor(models.Model):
+
+    @property
+    def short_des(self):
+        return 'this is some comment'
+
+    short_des.fget.short_description = '적용 위치'
+
     ordering = models.IntegerField(default=0)
     image = models.ImageField(
         upload_to='images/', blank=False, default='images/default.jfif')
@@ -50,6 +83,12 @@ class Timeline(models.Model):
     class Meta:
         ordering = ['date']
 
+    @property
+    def short_des(self):
+        return 'this is some comment'
+
+    short_des.fget.short_description = '적용 위치'
+
     professor = models.ForeignKey(
         Professor, on_delete=models.CASCADE, related_name='timeline', db_column='professor_id')
     date = models.DateField(blank=False)
@@ -67,6 +106,12 @@ class AboutUs(models.Model):
         ('MS', '3'),
         ('Undergraduate', '4'),
     )
+
+    @property
+    def short_des(self):
+        return 'this is some comment'
+
+    short_des.fget.short_description = '적용 위치'
 
     name = models.CharField(max_length=100, unique=True, blank=False)
     position = models.CharField(max_length=13, choices=POSITION, blank=False)
@@ -90,6 +135,13 @@ CATEGORY_CHOICES = (
 
 
 class MembersTimeline(models.Model):
+
+    @property
+    def short_des(self):
+        return 'this is some comment'
+
+    short_des.fget.short_description = '적용 위치'
+
     category = models.CharField(
         max_length=12, choices=CATEGORY_CHOICES, blank=False)
     title = models.CharField(max_length=100, blank=False)
@@ -100,6 +152,13 @@ class MembersTimeline(models.Model):
 
 
 class ProfTimeline(models.Model):
+
+    @property
+    def short_des(self):
+        return 'this is some comment'
+
+    short_des.fget.short_description = '적용 위치'
+
     category = models.CharField(
         max_length=12, choices=CATEGORY_CHOICES, blank=False)
     title = models.CharField(max_length=100, blank=False)
@@ -127,6 +186,13 @@ class ProfTimeline(models.Model):
 #         default='images/img.jpg', blank=True, upload_to='research/')
 
 class ResearchArena(models.Model):
+
+    @property
+    def short_des(self):
+        return 'this is some comment'
+
+    short_des.fget.short_description = '적용 위치'
+
     title = models.CharField(max_length=100, unique=True, blank=False)
     content = RichTextUploadingField()
     thumnail = models.ImageField(
@@ -140,11 +206,20 @@ class ResearchArena(models.Model):
 
 class Publications(models.Model):
     CATEGORY = (
-        ('Journal', 'Journal'),
-        ('Conference', 'Conference'),
-        ('Patents', 'Patents')
+        ('International Papers', 'International Papers'),
+        ('International Conference', 'International Conference'),
+        ('Domestic Papers', 'Domestic Papers'),
+        ('Domestic Conference', 'Domestic Conference'),
+        ('Patents', 'Patents'),
     )
-    category = models.CharField(max_length=12, choices=CATEGORY, blank=False)
+
+    @property
+    def short_des(self):
+        return 'this is some comment'
+
+    short_des.fget.short_description = '적용 위치'
+
+    category = models.CharField(max_length=30, choices=CATEGORY, blank=False)
     title = models.CharField(max_length=100, unique=True, blank=False)
     members = models.ManyToManyField(AboutUs, related_name='member')
     detail = RichTextUploadingField()
@@ -157,6 +232,13 @@ class Publications(models.Model):
 
 
 class Project(models.Model):
+
+    @property
+    def short_des(self):
+        return 'this is some comment'
+
+    short_des.fget.short_description = '적용 위치'
+
     title = models.CharField(max_length=100, unique=True, blank=False)
     client = models.CharField(max_length=100)
     users = models.ManyToManyField(AboutUs, related_name='users')
@@ -167,9 +249,22 @@ class Project(models.Model):
 
 
 class PictureCa(models.Model):
+
+    @property
+    def short_des(self):
+        return 'this is some comment'
+
+    short_des.fget.short_description = '적용 위치'
+
     image = models.ImageField(
         upload_to='images/indexPic', blank=None)
     image_thumbnail = ImageSpecField(source='image',
                                      processors=[ResizeToFill(800, 400)],
                                      format='JPEG',
                                      options={'quality': 60})
+
+
+class IndexResearch(models.Model):
+    title = models.CharField(max_length=100, blank=False)
+    thumbnail = models.ImageField(upload_to='images/indexresearch', blank=None)
+    description = models.CharField(max_length=200, blank=False)

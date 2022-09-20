@@ -27,50 +27,205 @@
   <!-- component -->
   <!-- This is an example component -->
   <section class="max-w-full mx-auto px-4 sm:px-6 lg:px-4 pb-12">
+
     <div class="text-center py-10 ">
       <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
         Publications
       </h1>
     </div>
-    <section class="container mx-auto px-6 my-1 flex flex-wrap -m-4 pb-5 justify-center">
-      <div class="p-2 md:w-40 ">
-        <a href="{% url 'journal' 'default' %}" class="flex items-center p-4 bg-red-200 rounded-lg shadow-xs cursor-pointer hover:bg-red-500 hover:text-gray-100 justify-center">
-          <div>
-            <p class=" text-xs font-medium ml-2 ">
-              All
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="p-2 md:w-40 ">
-        <a href="{% url 'journal' 'Journal' %}" class="flex items-center p-4 bg-green-200 rounded-lg shadow-xs cursor-pointer hover:bg-green-500 hover:text-gray-100 justify-center">
-          <div>
-            <p class=" text-xs font-medium ml-2 ">
-              Journal
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="p-2 md:w-40 ">
-        <a href="{% url 'journal' 'Conference' %}" class="flex items-center p-4 bg-yellow-200 rounded-lg shadow-xs cursor-pointer hover:bg-yellow-500 hover:text-gray-100 justify-center">
-          <div>
-            <p class=" text-xs font-medium ml-2 ">
-              Conference
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="p-2 md:w-40 ">
-        <a href="{% url 'journal' 'Patents' %}" class="flex items-center p-4 bg-blue-200 rounded-lg shadow-xs cursor-pointer hover:bg-blue-500 hover:text-gray-100 justify-center">
-          <div>
-            <p class=" text-xs font-medium ml-2 ">
-              Patents
-            </p>
-          </div>
-        </a>
-      </div>
+    
+<div class="flex justify-start  ">
+  <div>
+    <div class="dropdown relative">
+      <button
+        class="
+          dropdown-toggle
+          px-6
+          py-2.5
+          bg-blue-600
+          text-white
+          font-medium
+          text-xs
+          leading-tight
+          uppercase
+          rounded
+          shadow-md
+          hover:bg-blue-700 hover:shadow-lg
+          focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+          active:bg-blue-800 active:shadow-lg active:text-white
+          transition
+          duration-150
+          ease-in-out
+          flex
+          items-center
+          whitespace-nowrap
+        "
+        type="button"
+        id="dropdownMenuButton1d"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        toggle
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="caret-down"
+          class="w-2 ml-2"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 320 512"
+        >
+          <path
+            fill="currentColor"
+            d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+          ></path>
+        </svg>
+      </button>
+      <ul
+        class="
+          dropdown-menu
+          min-w-max
+          absolute
+          hidden
+          bg-white
+          text-base
+          z-50
+          float-left
+          py-2
+          list-none
+          text-left
+          rounded-lg
+          shadow-lg
+          mt-1
+          hidden
+          m-0
+          bg-clip-padding
+          border-none
+        "
+        aria-labelledby="dropdownMenuButton1d"
+      >
+        <li>
+          <a
+            class="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-100
+            "
+            href="{% url 'journal' 'default' %}"
+            >all</a
+          >
+        </li>
+        <li>
+          <a
+            class="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-100
+            "
+            href="{% url 'journal' 'International Papres' %}"
+            >International Papers</a
+          >
+        </li>
+        <li>
+          <a
+            class="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-100
+            "
+            href="{% url 'journal' 'International Conference' %}"
+            >International Conference</a
+          >
+        </li>
+        <hr class="h-0 my-2 border border-solid border-t-0 border-gray-700 opacity-25" />
+        <li>
+          <a
+            class="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-100
+            "
+            href="{% url 'journal' 'Domestic Papers' %}"
+            >Domestic Papers</a
+          >
+        </li>
+        <li>
+          <a
+            class="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-100
+            "
+            href="{% url 'journal' 'Domestic Conference' %}"
+            >Domestic Conference</a
+          >
+        </li>
+        <hr class="h-0 my-2 border border-solid border-t-0 border-gray-700 opacity-25" />
+        <li>
+          <a
+            class="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-100
+            "
+            href="{% url 'journal' 'Patents' %}"
+            >Patents</a
+          >
+        </li>
 
-    </section>
+      </ul>
+    </div>
+  </div>
+</div>
     {% for obj in data %}
       <div class="text-left pt-10 pb-3 border-b-4 border-gray-300">
         <h4 class="font-bold text-2xl md:text-2xl lg:text-2xl font-heading text-gray-900 ">
@@ -84,9 +239,13 @@
             <div class="flex w-full items-center justify-between border-b pb-3">
               <div class="flex items-center space-x-3"></div>
               <div class="flex items-center space-x-4">
-                {% if list.category == 'Journal' %}
+                {% if list.category == 'International Papers' %}
                   <button class="rounded-2xl border border-green-400 text-green-500 bg-neutral-100 px-3 py-1 text-xs   font-semibold">{{list.category}}</button>
-                {% elif list.category == 'Conference' %}
+                {% elif list.category == 'International Conference' %}
+                  <button class="rounded-2xl border border-cyan-400 text-cyan-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{list.category}}</button>
+                {% elif list.category == 'Domestic Papers' %}
+                  <button class="rounded-2xl border border-rose-400 text-rose-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{list.category}}</button>
+                {% elif list.category == 'Domestic Conference' %}
                   <button class="rounded-2xl border border-yellow-400 text-yellow-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{list.category}}</button>
                 {% else %}
                   <button class="rounded-2xl border border-blue-400 text-blue-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{list.category}}</button>
@@ -101,33 +260,33 @@
             </div>
       
             <div>
-              <div class="flex items-center justify-between text-slate-500">
+              <div class="flex items-end justify-end text-slate-500">
                 <div class="flex space-x-2 md:space-x-8">
                   <section class="flex justify-center items-start">
                     {% if list.link %}
                     <a href="{{list.link}}">
-                      <button class="py-2 px-5 bg-blue-500 text-white rounded text shadow-xl">Link</button>
+                      <button class="py-1 px-4 bg-blue-500 text-white rounded text shadow-xl">Link</button>
                     </a>
                     {% else %}
                     <a href="{{list.link}}">
-                      <button class="py-2 px-5 bg-gray-500 text-white rounded text shadow-xl" disabled>Link</button>
+                      <button class="py-1 px-4 bg-gray-500 text-white rounded text shadow-xl" disabled>Link</button>
                     </a>
                     {% endif %}
                   </section>
                   <section class="flex justify-center items-start">
                     {% if list.file %}
                     <a href="{{list.file.url}}" download>
-                      <button class="py-2 px-5 bg-red-300 text-white rounded text shadow-xl">File</button>
+                      <button class="py-1 px-4 bg-red-300 text-white rounded text shadow-xl">File</button>
                     </a>
                     {% else %}
                     <a href="#">
-                      <button class="py-2 px-5 bg-gray-500 text-white rounded text shadow-xl" disabled>File</button>
+                      <button class="py-1 px-4 bg-gray-500 text-white rounded text shadow-xl" disabled>File</button>
                     </a>
                     {% endif %}
                   </section>
                   
                   <section class="flex justify-center items-start">
-                    <button onclick="document.getElementById('{{list.id}}').showModal()" id="btn" class="py-2 px-5 bg-purple-500 text-white rounded text shadow-xl">detail</button>
+                    <button onclick="document.getElementById('{{list.id}}').showModal()" id="btn" class="py-1 px-4 bg-purple-500 text-white rounded text shadow-xl">detail</button>
                   </section>
                 </div>
               </div>
@@ -161,6 +320,196 @@
       </dialog>      
       {% endfor %}
     {% endfor %}
+
+    <!--11~20 data-->
+    {% for obj in 1120data %}
+      <div class="text-left pt-10 pb-3 border-b-4 border-gray-300">
+        <h4 class="font-bold text-2xl md:text-2xl lg:text-2xl font-heading text-gray-900 ">
+          2011 ~ 2020
+        </h4>
+      </div>
+      {% comment %} section start {% endcomment %}
+        <div class=' pt-10'>
+          <div class="rounded-xl border p-5 shadow-md bg-white">
+            <div class="flex w-full items-center justify-between border-b pb-3">
+              <div class="flex items-center space-x-3"></div>
+              <div class="flex items-center space-x-4">
+                {% if obj.category == 'International Papers' %}
+                  <button class="rounded-2xl border border-green-400 text-green-500 bg-neutral-100 px-3 py-1 text-xs   font-semibold">{{obj.category}}</button>
+                {% elif obj.category == 'International Conference' %}
+                  <button class="rounded-2xl border border-cyan-400 text-cyan-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{obj.category}}</button>
+                {% elif obj.category == 'Domestic Papers' %}
+                  <button class="rounded-2xl border border-rose-400 text-rose-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{obj.category}}</button>
+                {% elif obj.category == 'Domestic Conference' %}
+                  <button class="rounded-2xl border border-yellow-400 text-yellow-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{obj.category}}</button>
+                {% else %}
+                  <button class="rounded-2xl border border-blue-400 text-blue-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{obj.category}}</button>
+                {% endif %}
+                <button class="rounded-2xl border border-purple-300 text-purple-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{obj.date}}</button>
+              </div>  
+            </div>
+      
+            <div class="mt-4 mb-6 min-w-full">
+              <div class="mb-3 text-xl font-bold">{{obj.title}}</div>
+              <div class="text-sm text-neutral-600">{% for mem in obj.members.all %}{{mem}},  {% endfor %}</div>
+            </div>
+      
+            <div>
+              <div class="flex items-end justify-end text-slate-500">
+                <div class="flex space-x-2 md:space-x-8">
+                  <section class="flex justify-center items-start">
+                    {% if obj.link %}
+                    <a href="{{obj.link}}">
+                      <button class="py-1 px-4 bg-blue-500 text-white rounded text shadow-xl">Link</button>
+                    </a>
+                    {% else %}
+                    <a href="{{obj.link}}">
+                      <button class="py-1 px-4 bg-gray-500 text-white rounded text shadow-xl" disabled>Link</button>
+                    </a>
+                    {% endif %}
+                  </section>
+                  <section class="flex justify-center items-start">
+                    {% if obj.file %}
+                    <a href="{{obj.file.url}}" download>
+                      <button class="py-1 px-4 bg-red-300 text-white rounded text shadow-xl">File</button>
+                    </a>
+                    {% else %}
+                    <a href="#">
+                      <button class="py-1 px-4 bg-gray-500 text-white rounded text shadow-xl" disabled>File</button>
+                    </a>
+                    {% endif %}
+                  </section>
+                  
+                  <section class="flex justify-center items-start">
+                    <button onclick="document.getElementById('{{obj.id}}').showModal()" id="btn" class="py-1 px-4 bg-purple-500 text-white rounded text shadow-xl">detail</button>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    {% comment %} section end {% endcomment %}
+      <dialog id="{{obj.id}}" class="h-auto w-11/12 md:w-1/2 p-5  bg-white rounded-md ">
+      
+        <div class="flex flex-col w-full h-auto ">
+          <!-- Header -->
+          <div class="flex w-full h-auto justify-center items-center pl-16">
+            <div class="flex w-10/12 h-auto py-3 justify-center items-center text-2xl font-bold">
+              {{obj.title}} Detail
+            </div>
+            <div onclick="document.getElementById('{{obj.id}}').close();" class="flex w-1/12 h-auto justify-center cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+            <!--Header End-->
+          </div>
+          <!-- Modal Content-->
+          <div class="flex w-full h-auto py-10 px-2 justify-center items-center bg-gray-200 rounded text-center text-gray-500">
+            {{obj.detail|safe}}
+          </div>
+          <!-- End of Modal Content-->
+    
+        </div>
+      </dialog>      
+    {% endfor %}
+
+    <!--00~10 data-->
+    {% for obj in 0010data %}
+      <div class="text-left pt-10 pb-3 border-b-4 border-gray-300">
+        <h4 class="font-bold text-2xl md:text-2xl lg:text-2xl font-heading text-gray-900 ">
+          2000 ~ 2010
+        </h4>
+      </div>
+      {% comment %} section start {% endcomment %}
+        <div class=' pt-10'>
+          <div class="rounded-xl border p-5 shadow-md bg-white">
+            <div class="flex w-full items-center justify-between border-b pb-3">
+              <div class="flex items-center space-x-3"></div>
+              <div class="flex items-center space-x-4">
+                {% if obj.category == 'International Papers' %}
+                  <button class="rounded-2xl border border-green-400 text-green-500 bg-neutral-100 px-3 py-1 text-xs   font-semibold">{{obj.category}}</button>
+                {% elif obj.category == 'International Conference' %}
+                  <button class="rounded-2xl border border-cyan-400 text-cyan-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{obj.category}}</button>
+                {% elif obj.category == 'Domestic Papers' %}
+                  <button class="rounded-2xl border border-rose-400 text-rose-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{obj.category}}</button>
+                {% elif obj.category == 'Domestic Conference' %}
+                  <button class="rounded-2xl border border-yellow-400 text-yellow-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{obj.category}}</button>
+                {% else %}
+                  <button class="rounded-2xl border border-blue-400 text-blue-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{obj.category}}</button>
+                {% endif %}
+                <button class="rounded-2xl border border-purple-300 text-purple-500 bg-neutral-100 px-3 py-1 text-xs font-semibold">{{obj.date}}</button>
+              </div>  
+            </div>
+      
+            <div class="mt-4 mb-6 min-w-full">
+              <div class="mb-3 text-xl font-bold">{{obj.title}}</div>
+              <div class="text-sm text-neutral-600">{% for mem in obj.members.all %}{{mem}},  {% endfor %}</div>
+            </div>
+      
+            <div>
+              <div class="flex items-end justify-end text-slate-500">
+                <div class="flex space-x-2 md:space-x-8">
+                  <section class="flex justify-center items-start">
+                    {% if obj.link %}
+                    <a href="{{obj.link}}">
+                      <button class="py-1 px-4 bg-blue-500 text-white rounded text shadow-xl">Link</button>
+                    </a>
+                    {% else %}
+                    <a href="{{obj.link}}">
+                      <button class="py-1 px-4 bg-gray-500 text-white rounded text shadow-xl" disabled>Link</button>
+                    </a>
+                    {% endif %}
+                  </section>
+                  <section class="flex justify-center items-start">
+                    {% if obj.file %}
+                    <a href="{{obj.file.url}}" download>
+                      <button class="py-1 px-4 bg-red-300 text-white rounded text shadow-xl">File</button>
+                    </a>
+                    {% else %}
+                    <a href="#">
+                      <button class="py-1 px-4 bg-gray-500 text-white rounded text shadow-xl" disabled>File</button>
+                    </a>
+                    {% endif %}
+                  </section>
+                  
+                  <section class="flex justify-center items-start">
+                    <button onclick="document.getElementById('{{obj.id}}').showModal()" id="btn" class="py-1 px-4 bg-purple-500 text-white rounded text shadow-xl">detail</button>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    {% comment %} section end {% endcomment %}
+      <dialog id="{{obj.id}}" class="h-auto w-11/12 md:w-1/2 p-5  bg-white rounded-md ">
+      
+        <div class="flex flex-col w-full h-auto ">
+          <!-- Header -->
+          <div class="flex w-full h-auto justify-center items-center pl-16">
+            <div class="flex w-10/12 h-auto py-3 justify-center items-center text-2xl font-bold">
+              {{obj.title}} Detail
+            </div>
+            <div onclick="document.getElementById('{{obj.id}}').close();" class="flex w-1/12 h-auto justify-center cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+            <!--Header End-->
+          </div>
+          <!-- Modal Content-->
+          <div class="flex w-full h-auto py-10 px-2 justify-center items-center bg-gray-200 rounded text-center text-gray-500">
+            {{obj.detail|safe}}
+          </div>
+          <!-- End of Modal Content-->
+    
+        </div>
+      </dialog>      
+    {% endfor %}
+
+
 
   </section>
 {% endblock content %}

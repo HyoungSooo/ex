@@ -68,8 +68,8 @@ class PostListView(ListView):
             return Post.objects.filter(category='News').order_by('-created_at')
         elif self.kwargs['category'] == 'research':
             return Post.objects.filter(category='Research').order_by('-created_at')
-        elif self.kwargs['category'] == 'photo':
-            return Post.objects.exclude(thumbnail='')
+        elif self.kwargs['category'] == 'Os':
+            return Post.objects.filter(category='Outstanding').order_by('-created_at')
         else:
             return Post.objects.all().order_by('-created_at')
 
@@ -80,7 +80,7 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["News"] = Post.objects.filter(
-            category='News').order_by('-created_at')[:5]
+            category='News').order_by('-created_at')[:3]
         context["pic"] = PictureCa.objects.all()
         return context
 
@@ -125,15 +125,22 @@ class PublictionsView(ListView):
         if self.kwargs['category'] == 'default':
             data = Publications.objects.all()
         else:
-            if self.kwargs['category'] in ('Journal', 'Conference', 'Patents'):
+            if self.kwargs['category'] in ('International Papers', 'International Conference', 'Domestic Papers', 'Domestic Conference', 'Patents'):
                 data = Publications.objects.filter(
                     category=self.kwargs['category'])
             else:
                 raise Http404
         sub = set()
 
+        context['0010data'] = Publications.objects.filter(
+            date__gte=date(2000, 1, 1), date__lte=date(2010, 12, 31))
+        context['1120data'] = Publications.objects.filter(
+            date__gte=date(2011, 1, 1), date__lte=date(2020, 12, 31)
+        )
+
         l = []
-        for i in data:
+        preprocessing = data.filter(date__gte=date(2021, 1, 1))
+        for i in preprocessing:
             new = False
             if i.date.year not in sub:
                 new = True

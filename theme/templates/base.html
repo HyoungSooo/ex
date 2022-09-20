@@ -12,6 +12,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer="defer"></script>
+    <script src="{% static 'js/default.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
 
 
     <!-- Tailwind -->
@@ -41,6 +57,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/dist/style.css' %}">
+    
   </head>
   <style>
     .example::-webkit-scrollbar {
@@ -53,6 +70,7 @@
     }
 
   </style>
+  
 
   <body class="bg-white font-family-karla ">
     <!-- component -->
@@ -190,6 +208,22 @@
                   />
                 </svg>
               </button>
+              <div class="flex flex-col items-center justify-end flex-1 p-2 space-y-4">
+                <!-- Instagram -->
+                <div class="flex justify-center">
+                  <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light" class="inline-block p-3 mb-2 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out" style="background-color: #c13584;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4">
+                      <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                    </svg>
+                  </button>
+                </div>
+                <div class="flex justify-center">
+                  <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light" class="inline-block p-3 mb-2 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out" style="background-color: #c13584;">
+                    <i class="fas fa-blog fa-lg"></i>
+                  </button>
+                </div>
+              </div>
+              
             </div>
           </nav>
           <div
@@ -233,18 +267,23 @@
                       />
                     </svg>
                   </span>
-                  <span>Home</span>
+                  <span class ="ml-2 text-sm">Home</span>
                 </a>
-                 <a
-                  href="{% url 'RA'  %}"
-                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
-                >
-                  <span
-                    aria-hidden="true"
-                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
+
+              <div x-data="{ isActive: false, open: false }">
+              <!-- active classes 'bg-indigo-100 dark:bg-indigo-600' -->
+                  <a
+                    href="#"
+                    @click="$event.preventDefault(); open = !open"
+                    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600"
+                    :class="{ 'bg-indigo-100 dark:bg-indigo-600': isActive || open }"
+                    role="button"
+                    aria-haspopup="true"
+                    :aria-expanded="(open || isActive) ? 'true' : 'false'"
                   >
+                  <span aria-hidden="true">
                     <svg
-                      class="w-6 h-6"
+                      class="w-5 h-5"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -254,22 +293,60 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                        d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
                       />
                     </svg>
                   </span>
-                  <span>관심분야</span>
-                </a>
-                <a
-                  href="{% url 'project' %}"
-                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
-                >
-                  <span
-                    aria-hidden="true"
-                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
-                  >
+                  <span class="ml-2 text-sm"> Research </span>
+                  <span aria-hidden="true" class="ml-auto">
+                    <!-- active class 'rotate-180' -->
                     <svg
-                      class="w-6 h-6"
+                      class="w-4 h-4 transition-transform transform"
+                      :class="{ 'rotate-180': open }"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </a>
+                <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components">
+                  <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                  <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+
+                  <a
+                    href="{% url 'RA'  %}"
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                  >
+                    Research Area
+                  </a>
+                  <a
+                    href="{% url 'project' %}"
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                  >
+                    Projects
+                  </a>
+
+                </div>
+              </div>
+              <div x-data="{ isActive: false, open: false }">
+              <!-- active classes 'bg-indigo-100 dark:bg-indigo-600' -->
+                  <a
+                    href="#"
+                    @click="$event.preventDefault(); open = !open"
+                    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600"
+                    :class="{ 'bg-indigo-100 dark:bg-indigo-600': isActive || open }"
+                    role="button"
+                    aria-haspopup="true"
+                    :aria-expanded="(open || isActive) ? 'true' : 'false'"
+                  >
+                  <span aria-hidden="true">
+                    <svg
+                      class="w-5 h-5"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -279,22 +356,59 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                        d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
                       />
                     </svg>
                   </span>
-                  <span>Project</span>
-                </a>
-                {% comment %} <a
-                  href="{% url 'purpose' %}"
-                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
-                >
-                  <span
-                    aria-hidden="true"
-                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
-                  >
+                  <span class="ml-2 text-sm"> Lab Members </span>
+                  <span aria-hidden="true" class="ml-auto">
+                    <!-- active class 'rotate-180' -->
                     <svg
-                      class="w-6 h-6"
+                      class="w-4 h-4 transition-transform transform"
+                      :class="{ 'rotate-180': open }"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </a>
+                <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components">
+                  <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                  <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                  <a
+                    href="{% url 'principle' 'default' %}"
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                  >
+                    Professors
+                  </a>
+                  <a
+                    href="{% url 'team' 'PhD' %}"
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                  >
+                    Members
+                  </a>
+
+                </div>
+              </div>
+              <div x-data="{ isActive: false, open: false }">
+              <!-- active classes 'bg-indigo-100 dark:bg-indigo-600' -->
+                  <a
+                    href="#"
+                    @click="$event.preventDefault(); open = !open"
+                    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600"
+                    :class="{ 'bg-indigo-100 dark:bg-indigo-600': isActive || open }"
+                    role="button"
+                    aria-haspopup="true"
+                    :aria-expanded="(open || isActive) ? 'true' : 'false'"
+                  >
+                  <span aria-hidden="true">
+                    <svg
+                      class="w-5 h-5"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -304,22 +418,80 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                        d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
                       />
                     </svg>
                   </span>
-                  <span>연구실 소개</span>
-                </a> {% endcomment %}
-                <a
-                  href="{% url 'principle' 'default' %}"
-                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
-                >
-                  <span
-                    aria-hidden="true"
-                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
-                  >
+                  <span class="ml-2 text-sm"> Research Result </span>
+                  <span aria-hidden="true" class="ml-auto">
+                    <!-- active class 'rotate-180' -->
                     <svg
-                      class="w-6 h-6"
+                      class="w-4 h-4 transition-transform transform"
+                      :class="{ 'rotate-180': open }"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </a>
+                <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components">
+                  <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                  <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                  <a
+                    href="{% url 'journal' 'default' %}"
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                  >
+                    International Papers
+                  </a>
+                  <a
+                    href="{% url 'journal' 'default' %}"
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                  >
+                    International Conference
+                  </a>
+                  <a
+                    href="{% url 'journal' 'default' %}"
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                  >
+                    Domestic Papers
+                  </a>
+                  <a
+                    href="{% url 'journal' 'default' %}"
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                  >
+                    Domestic Conference
+                  </a>
+                  <a
+                    href="{% url 'journal' 'default' %}"
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                  >
+                    Patents
+                  </a>
+
+                </div>
+              </div>
+              <div x-data="{ isActive: false, open: false }">
+              <!-- active classes 'bg-indigo-100 dark:bg-indigo-600' -->
+                  <a
+                    href="#"
+                    @click="$event.preventDefault(); open = !open"
+                    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600"
+                    :class="{ 'bg-indigo-100 dark:bg-indigo-600': isActive || open }"
+                    role="button"
+                    aria-haspopup="true"
+                    :aria-expanded="(open || isActive) ? 'true' : 'false'"
+                  >
+                  <span aria-hidden="true">
+                    <svg
+                      class="w-5 h-5"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -329,118 +501,51 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                        d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
                       />
                     </svg>
                   </span>
-                  <span>교수진 소개</span>
-                  
-                </a>
-                <a
-                  href="{% url 'team' 'PhD' %}"
-                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
-                >
-                  <span
-                    aria-hidden="true"
-                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
-                  >
+                  <span class="ml-2 text-sm"> Etc. </span>
+                  <span aria-hidden="true" class="ml-auto">
+                    <!-- active class 'rotate-180' -->
                     <svg
-                      class="w-6 h-6"
+                      class="w-4 h-4 transition-transform transform"
+                      :class="{ 'rotate-180': open }"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                      />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </span>
-                  <span>구성원 소개</span>
                 </a>
-                <a
-                  href="{% url 'journal' 'default' %}"
-                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
-                >
-                  <span
-                    aria-hidden="true"
-                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
+                <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components">
+                  <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                  <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                  <a
+                    href="{% url 'News' 'all' %}"
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
                   >
-                    <svg
-                      class="w-6 h-6"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </span>
-                  <span>연구 실적</span>
-                </a>
-                
-                
-               
-                
-                <a
-                  href="{% url 'News' 'a' %}"
-                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
-                >
-                  <span
-                    aria-hidden="true"
-                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
+                    Borad
+                  </a>
+                  <a
+                    href="{% url 'Photo' 'a' %}"
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
                   >
-                    <svg
-                      class="w-6 h-6"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </span>
-                  <span>게시판</span>
-                </a>
-                <a
-                <a
-                  href="{% url 'News' 'a' %}"
-                  class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub"
-                >
-                  <span
-                    aria-hidden="true"
-                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
+                    Photo
+                  </a>
+                  <a
+                    href="{% url 'News' 'Os' %}"
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
                   >
-                    <svg
-                      class="w-6 h-6"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </span>
-                  <span>일정</span>
-                </a>
+                    Outstanding Performance
+                  </a>
+
+                </div>
               </div>
             </nav>
 
@@ -458,6 +563,7 @@
             <!-- Main -->
             <main class="px-4 py-8">
               {% block content %}{% endblock content %}
+              
 
             </main>
           </div>
@@ -505,10 +611,32 @@
       </div>
 
     </nav> {% endcomment %}
-
-
+    <!-- Back to top button -->
+    <button
+  type="button"
+  data-mdb-ripple="true"
+  data-mdb-ripple-color="light"
+  class="inline-block p-3 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out  bottom-5 right-5 fixed rotate-180"
+  id="btn-back-to-top"
+>
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    data-prefix="fas"
+    class="w-4 h-4"
+    role="img"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 448 512"
+  >
+    <path
+      fill="currentColor"
+      d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"
+    ></path>
+  </svg>
+</button>
 
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
     <script>
         const setup = () => {
@@ -525,6 +653,6 @@
         }
       }
     </script>
-
+    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
 
 </html>

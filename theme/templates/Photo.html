@@ -47,23 +47,7 @@
           </style>
           <!-- 게시판 목록 시작 { -->
           <div id="bo_gall" style="width:100%">
-            <nav id="bo_cate" class="cate_line flex justify-center">
-              <ul id="bo_cate_ul">
-                <li>
-                  <a href="{% url 'News' 'a' %}">전체</a>
-                </li>
-                <li>
-                  <a href="{% url 'Photo' 'photo' %}">Photos & Video</a>
-                </li>
-                <li>
-                  <a href="{% url 'News' 'news' %}">News</a>
-                </li>
-                <li>
-                  <a href="{% url 'News' 'research' %}">Research</a>
-                </li>
-
-              </ul>
-            </nav>
+          
 
             <form name="fboardlist" id="fboardlist" action="http://ool.snu.ac.kr/bbs/board_list_update.php" onsubmit="return fboardlist_submit(this);" method="post">
               <ul id="gall_ul" class="gall_row">

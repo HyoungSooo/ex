@@ -47,23 +47,7 @@
           <div id="sub_conWr">
 
             <div id="bo_list" style="width:100%">
-              <nav id="bo_cate" class="cate_line flex justify-center">
-                <ul id="bo_cate_ul">
-                  <li>
-                    <a href="{% url 'News' 'a' %}">전체</a>
-                  </li>
-                  <li>
-                    <a href="{% url 'Photo' 'photo' %}">Photos & Video</a>
-                  </li>
-                  <li>
-                    <a href="{% url 'News' 'news' %}">News</a>
-                  </li>
-                  <li>
-                    <a href="{% url 'News' 'research' %}">Research</a>
-                  </li>
-
-                </ul>
-              </nav>
+              
               <!-- } 게시판 카테고리 끝 -->
 
               <form name="fboardlist" id="fboardlist" action="http://ool.snu.ac.kr/bbs/board_list_update.php" onsubmit="return fboardlist_submit(this);" method="post">
@@ -73,7 +57,117 @@
                   <table>
                     <thead>
                       <tr>
-                        <th scope="col" width="10%">분류</th>
+                        <th scope="col" width="10%"><div class="flex justify-center">
+  <div>
+    <div class="dropdown relative">
+      <a
+        class="
+          dropdown-toggle
+          px-3
+          py-2.5
+          bg-gray-300
+          text-white
+          font-medium
+          text-xs
+          leading-tight
+          uppercase
+          rounded
+          shadow-md
+          transition
+          duration-150
+          ease-in-out
+          flex
+          items-center
+          whitespace-nowrap
+        "
+        href="#"
+        type="button"
+        id="dropdownMenuButton2"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        분류
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="caret-down"
+          class="w-2 ml-2"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 320 512"
+        >
+          <path
+            fill="currentColor"
+            d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+          ></path>
+        </svg>
+      </a>
+      <ul
+        class="
+          dropdown-menu
+          min-w-max
+          absolute
+          hidden
+          bg-white
+          text-base
+          z-50
+          float-left
+          py-2
+          list-none
+          text-left
+          rounded-lg
+          shadow-lg
+          mt-1
+          hidden
+          m-0
+          bg-clip-padding
+          border-none
+        "
+        aria-labelledby="dropdownMenuButton2"
+      >
+        <li>
+          <a
+            class="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-100
+            "
+            href="{% url 'News' 'research' %}"
+            >research</a
+          >
+        </li>
+        <li>
+          <a
+            class="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-100
+            "
+            href="{% url 'News' 'news' %}"
+            >News</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</div></th>
                         <th scope="col" width="70%">제목</th>
                         <th scope="col" class="rep" width="10%">글쓴이</th>
                         <!-- <th scope="col"><a href="/bbs/board.php?bo_table=sub5_4&amp;sop=and&amp;sst=wr_hit&amp;sod=desc&amp;sfl=&amp;stx=&amp;sca=&amp;page=1">조회 </a></th>-->
@@ -92,7 +186,7 @@
 
                           <td class="td_subject" style="padding-left:0px">
                             <div class="bo_tit ">
-                              <a href="#">
+                              <a href="{% url 'post_detail' obj.id %}">
                                 {{obj.title}}
                               </a>
                             </div>
