@@ -1,5 +1,3 @@
-
-
 from datetime import date
 
 from django.shortcuts import render
@@ -7,7 +5,7 @@ from django.http import Http404
 
 from django.views.generic import View, ListView, DetailView, TemplateView
 
-from core.models import Post, Purpose, Professor, Timeline, AboutUs, Publications, ResearchArena, Project, PictureCa, ProfTimeline
+from core.models import Post, Purpose, Professor, Timeline, AboutUs, Publications, ResearchArena, Project, PictureCa, ProfTimeline, IndexResearch, MembersTimeline
 
 # Create your views here.
 
@@ -20,6 +18,10 @@ class AboutView(ListView):
     def get_queryset(self):
         return AboutUs.objects.filter(position=self.kwargs['category'])
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.kwargs['category']
+        return context
 
 # class PublicationsView(ListView):
 #     model = Publictions
@@ -40,7 +42,14 @@ class PrincipleView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        prof = super().get_queryset()
         context['professor'] = Professor.objects.all()
+        context['RItimeline'] = ProfTimeline.objects.filter(
+            member=prof[0].id, category='Interest').order_by('-start_date')
+        context['EDtimeline'] = ProfTimeline.objects.filter(
+            member=prof[0].id, category='Education').order_by('-start_date')
+        context['EXtimeline'] = ProfTimeline.objects.filter(
+            member=prof[0].id, category='Experience').order_by('-start_date')
         return context
 
 
@@ -81,7 +90,9 @@ class IndexView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["News"] = Post.objects.filter(
             category='News').order_by('-created_at')[:3]
-        context["pic"] = PictureCa.objects.all()
+        context["pic"] = PictureCa.objects.all()[1:]
+        context["firstpic"] = PictureCa.objects.all().first()
+        context['Re'] = IndexResearch.objects.all()[:4]
         return context
 
 
@@ -110,8 +121,15 @@ class MemberDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        mem = super().get_queryset()
         category = AboutUs.objects.get(id=self.kwargs['pk']).position
         context['others'] = AboutUs.objects.filter(position=category)
+        context['RItimeline'] = MembersTimeline.objects.filter(
+            member=mem[0].id, category='Interest').order_by('-start_date')
+        context['EDtimeline'] = MembersTimeline.objects.filter(
+            member=mem[0].id, category='Education').order_by('-start_date')
+        context['EXtimeline'] = MembersTimeline.objects.filter(
+            member=mem[0].id, category='Experience').order_by('-start_date')
         return context
 
 

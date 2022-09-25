@@ -51,15 +51,15 @@
               <img class="h-auto w-full mx-auto" src="{{obj.image.url}}" alt="">
             </div>
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{obj.name}}</h1>
-            <h3 class="text-gray-600 font-lg text-semibold leading-6">{{obj.position}}</h3>
+            <h3 class="text-gray-600 font-lg text-semibold leading-6"></h3>
             <ul class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
               <li class="flex items-center py-3">
                 <span>Status</span>
-                <span class="ml-auto"><span class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span>
+                <span class="ml-auto"><span class="bg-green-500 py-1 px-2 rounded text-white text-sm">{{obj.position}}</span></span>
               </li>
               <li class="flex items-center py-3">
                 <span>Member since</span>
-                <span class="ml-auto">Nov 07, 2016</span>
+                <span class="ml-auto">{{obj.member_since}}</span>
               </li>
             </ul>
           </div>
@@ -143,22 +143,16 @@
                   <span class="tracking-wide">Reaserch Interest</span>
                 </div>
                 <ul class="space-y-2 px-11">
+                  {% for obj in RItimeline %}
                   <li>
-                    <div class="text-green-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                    <div class="text-green-600">{{obj.title}}</div>
+                    {% if obj.end_date %}
+                    <div class="text-gray-500 text-xs">{{obj.start_date}} - {{obj.end_date}}</div>
+                    {% else %}
+                    <div class="text-gray-500 text-xs">{{obj.start_date}} - Now</div>
+                    {% endif %}
                   </li>
-                  <li>
-                    <div class="text-green-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                  </li>
-                  <li>
-                    <div class="text-green-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                  </li>
-                  <li>
-                    <div class="text-green-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                  </li>
+                  {% endfor %}
                 </ul>
               </div>
             </div>
@@ -177,22 +171,16 @@
                   <span class="tracking-wide">Experience</span>
                 </div>
                 <ul class="space-y-2 px-11">
+                  {% for obj in EXtimeline %}
                   <li>
-                    <div class="text-green-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                    <div class="text-green-600">{{obj.title}}</div>
+                    {% if obj.end_date %}
+                    <div class="text-gray-500 text-xs">{{obj.start_date}} - {{obj.end_date}}</div>
+                    {% else %}
+                    <div class="text-gray-500 text-xs">{{obj.start_date}} - Now</div>
+                    {% endif %}
                   </li>
-                  <li>
-                    <div class="text-green-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                  </li>
-                  <li>
-                    <div class="text-green-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                  </li>
-                  <li>
-                    <div class="text-green-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                  </li>
+                  {% endfor %}
                 </ul>
               </div>
             </div>
@@ -213,22 +201,16 @@
                   <span class="tracking-wide">Education</span>
                 </div>
                 <ul class="space-y-2 px-11">
+                 {% for obj in EDtimeline %}
                   <li>
-                    <div class="text-green-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                    <div class="text-green-600">{{obj.title}}</div>
+                    {% if obj.end_date %}
+                    <div class="text-gray-500 text-xs">{{obj.start_date}} - {{obj.end_date}}</div>
+                    {% else %}
+                    <div class="text-gray-500 text-xs">{{obj.start_date}} - Now</div>
+                    {% endif %}
                   </li>
-                  <li>
-                    <div class="text-green-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                  </li>
-                  <li>
-                    <div class="text-green-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                  </li>
-                  <li>
-                    <div class="text-green-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                  </li>
+                  {% endfor %}
                 </ul>
               </div>
             </div>

@@ -6,40 +6,10 @@
   <section class="max-w-full mx-auto px-4 sm:px-6 lg:px-4 pb-12">
     <div class="text-center py-10 ">
       <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
-        Lab Members
+        {{title}}
       </h1>
     </div>
     <!-- component -->
-    <section class="container mx-auto px-6 my-1 flex flex-wrap -m-4 pb-20 justify-center">
-      <div class="p-2 md:w-40 ">
-        <a href="{% url 'team' 'PhD' %}" class="flex items-center p-4 bg-green-200 rounded-lg shadow-xs cursor-pointer hover:bg-green-500 hover:text-gray-100 justify-center">
-          <div>
-            <p class=" text-xs font-medium ml-2 ">
-              PH.d
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="p-2 md:w-40 ">
-        <a href="{% url 'team' 'MS' %}" class="flex items-center p-4 bg-yellow-200 rounded-lg shadow-xs cursor-pointer hover:bg-yellow-500 hover:text-gray-100 justify-center">
-          <div>
-            <p class=" text-xs font-medium ml-2 ">
-              MS
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="p-2 md:w-40 ">
-        <a href="{% url 'team' 'Undergraduate' %}" class="flex items-center p-4 bg-blue-200 rounded-lg shadow-xs cursor-pointer hover:bg-blue-500 hover:text-gray-100 justify-center">
-          <div>
-            <p class=" text-xs font-medium ml-2 ">
-              Undergraduated
-            </p>
-          </div>
-        </a>
-      </div>
-
-    </section>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <!-- component -->
       {% for obj in about_us %}

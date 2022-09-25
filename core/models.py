@@ -68,12 +68,12 @@ class Professor(models.Model):
     image = models.ImageField(
         upload_to='images/', blank=False, default='images/default.jfif')
     name = models.CharField(max_length=100, unique=True, blank=False)
-    greeting = RichTextUploadingField()
     phone = models.CharField(max_length=100, blank=True)
     fax = models.CharField(max_length=100, blank=True)
     email = models.EmailField(max_length=100, blank=True)
     position = models.CharField(max_length=100, blank=True)
     office = models.CharField(max_length=100, blank=True)
+    member_since = models.DateField()
 
     def __str__(self):
         return self.name
@@ -102,9 +102,10 @@ class Timeline(models.Model):
 class AboutUs(models.Model):
     POSITION = (
         ('Professor', '1'),
-        ('PhD', '2'),
-        ('MS', '3'),
-        ('Undergraduate', '4'),
+        ('PH.D', 'PH.D'),
+        ('PH.D Student', 'PH.D Student'),
+        ('Post Graduate', 'Post Graduate'),
+        ('Undergraduate', 'Undergraduate'),
     )
 
     @property
@@ -163,7 +164,7 @@ class ProfTimeline(models.Model):
         max_length=12, choices=CATEGORY_CHOICES, blank=False)
     title = models.CharField(max_length=100, blank=False)
     start_date = models.DateField()
-    end_date = models.DateField()
+    end_date = models.DateField(blank=True, null=True)
     member = models.ForeignKey(
         Professor, on_delete=models.CASCADE, related_name="MemberReaSearch")
 
