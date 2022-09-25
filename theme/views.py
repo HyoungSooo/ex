@@ -5,7 +5,7 @@ from django.http import Http404
 
 from django.views.generic import View, ListView, DetailView, TemplateView
 
-from core.models import Post, Purpose, Professor, Timeline, AboutUs, Publications, ResearchArena, Project, PictureCa, ProfTimeline, IndexResearch, MembersTimeline
+from core.models import Post, Purpose, Professor, Timeline, AboutUs, Publications, ResearchArena, Project, PictureCa, ProfTimeline, IndexResearch, MembersTimeline, tasks
 
 # Create your views here.
 
@@ -93,6 +93,10 @@ class IndexView(TemplateView):
         context["pic"] = PictureCa.objects.all()[1:]
         context["firstpic"] = PictureCa.objects.all().first()
         context['Re'] = IndexResearch.objects.all()[:4]
+        context['research'] = Post.objects.filter(
+            category='Research').order_by('-created_at')[:3]
+        context['os'] = Post.objects.filter(category= 'Outstanding').order_by('-created_at')[:3]
+        context['tasks'] = tasks.objects.all()
         return context
 
 

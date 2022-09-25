@@ -151,6 +151,9 @@ class MembersTimeline(models.Model):
     member = models.ForeignKey(
         AboutUs, on_delete=models.CASCADE, related_name="MemberReaSearch")
 
+    def __str__(self):
+        return self.title
+
 
 class ProfTimeline(models.Model):
 
@@ -167,6 +170,9 @@ class ProfTimeline(models.Model):
     end_date = models.DateField(blank=True, null=True)
     member = models.ForeignKey(
         Professor, on_delete=models.CASCADE, related_name="MemberReaSearch")
+
+    def __str__(self):
+        return self.title
 
 
 # class ResearchCategory(models.Model):
@@ -248,6 +254,9 @@ class Project(models.Model):
     start_date = models.DateField()
     end_date = models.DateField(blank=True)
 
+    def __str__(self):
+        return self.title
+
 
 class PictureCa(models.Model):
 
@@ -264,8 +273,23 @@ class PictureCa(models.Model):
                                      format='JPEG',
                                      options={'quality': 60})
 
+    def __str__(self):
+        return self.image.name
+
 
 class IndexResearch(models.Model):
     title = models.CharField(max_length=100, blank=False)
     thumbnail = models.ImageField(upload_to='images/indexresearch', blank=None)
     description = models.CharField(max_length=200, blank=False)
+
+class tasks(models.Model):
+    work = models.CharField(max_length=100, blank=False)
+    date = models.DateField(blank=False)
+
+    class Meta:
+        ordering = ['-date']
+
+
+    def __str__(self) -> str:
+        return self.work
+    

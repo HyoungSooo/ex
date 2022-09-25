@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Project, Purpose, Professor, Timeline, AboutUs, Publications, ResearchArena, MembersTimeline, PictureCa, ProfTimeline, IndexResearch, PhotoVedio
+from .models import Post, Project, Purpose, Professor, Timeline, AboutUs, Publications, ResearchArena, MembersTimeline, PictureCa, ProfTimeline, IndexResearch, PhotoVedio, tasks
 
 
 class CustomPostAdmin(admin.ModelAdmin):
@@ -30,3 +30,4 @@ admin.site.register(Project)
 admin.site.register(PictureCa)
 admin.site.register(PhotoVedio)
 admin.site.register(IndexResearch)
+admin.site.register(tasks)
