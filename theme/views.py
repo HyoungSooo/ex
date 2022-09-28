@@ -42,14 +42,17 @@ class PrincipleView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        prof = super().get_queryset()
         context['professor'] = Professor.objects.all()
+        if self.kwargs['prof_name'] == 'default':
+            prof = Professor.objects.order_by('ordering').first()
+        else:
+            prof = Professor.objects.get(name=self.kwargs['prof_name'])
         context['RItimeline'] = ProfTimeline.objects.filter(
-            member=prof[0].id, category='Interest').order_by('-start_date')
+            member=prof.id, category='Interest').order_by('-start_date')
         context['EDtimeline'] = ProfTimeline.objects.filter(
-            member=prof[0].id, category='Education').order_by('-start_date')
+            member=prof.id, category='Education').order_by('-start_date')
         context['EXtimeline'] = ProfTimeline.objects.filter(
-            member=prof[0].id, category='Experience').order_by('-start_date')
+            member=prof.id, category='Experience').order_by('-start_date')
         return context
 
 
@@ -95,7 +98,8 @@ class IndexView(TemplateView):
         context['Re'] = IndexResearch.objects.all()[:4]
         context['research'] = Post.objects.filter(
             category='Research').order_by('-created_at')[:3]
-        context['os'] = Post.objects.filter(category= 'Outstanding').order_by('-created_at')[:3]
+        context['os'] = Post.objects.filter(
+            category='Outstanding').order_by('-created_at')[:3]
         context['tasks'] = tasks.objects.all()
         return context
 

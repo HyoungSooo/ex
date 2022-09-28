@@ -43,9 +43,9 @@ def get_secret(setting):
 SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['121.136.235.27', '*', 'localhost']
+ALLOWED_HOSTS = ['121.136.235.27', '*', 'localhost', '203.249.30.111']
 
 
 # Application definition
