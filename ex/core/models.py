@@ -229,9 +229,6 @@ class Publications(models.Model):
     category = models.CharField(max_length=500, choices=CATEGORY, blank=False)
     title = models.CharField(max_length=100, unique=True, blank=False)
     members = models.ManyToManyField(AboutUs, related_name='member')
-    detail = RichTextUploadingField()
-    link = models.URLField(blank=True)
-    file = models.FileField(upload_to='files/', blank=True, default=None)
     date = models.DateField(blank=False)
 
     def __str__(self):

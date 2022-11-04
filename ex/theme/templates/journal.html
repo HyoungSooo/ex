@@ -258,38 +258,7 @@
               <div class="mb-3 text-xl font-bold">{{forloop.counter}}) {{list.title}}</div>
             </div>
       
-            <div>
-              <div class="flex items-end justify-end text-slate-500">
-                <div class="flex space-x-2 md:space-x-8">
-                  <section class="flex justify-center items-start">
-                    {% if list.link %}
-                    <a href="{{list.link}}">
-                      <button class="py-1 px-4 bg-blue-500 text-white rounded text shadow-xl">Link</button>
-                    </a>
-                    {% else %}
-                    <a href="{{list.link}}">
-                      <button class="py-1 px-4 bg-gray-500 text-white rounded text shadow-xl" disabled>Link</button>
-                    </a>
-                    {% endif %}
-                  </section>
-                  <section class="flex justify-center items-start">
-                    {% if list.file %}
-                    <a href="{{list.file.url}}" download>
-                      <button class="py-1 px-4 bg-red-300 text-white rounded text shadow-xl">File</button>
-                    </a>
-                    {% else %}
-                    <a href="#">
-                      <button class="py-1 px-4 bg-gray-500 text-white rounded text shadow-xl" disabled>File</button>
-                    </a>
-                    {% endif %}
-                  </section>
-                  
-                  <section class="flex justify-center items-start">
-                    <button onclick="document.getElementById('{{list.id}}').showModal()" id="btn" class="py-1 px-4 bg-purple-500 text-white rounded text shadow-xl">detail</button>
-                  </section>
-                </div>
-              </div>
-            </div>
+           
           </div>
         </div>
     {% comment %} section end {% endcomment %}
@@ -321,15 +290,15 @@
     {% endfor %}
 
     <!--11~20 data-->
-    <div class="text-left pt-10 pb-3 border-b-4 border-gray-300">
+    {% comment %} <div class="text-left pt-10 pb-3 border-b-4 border-gray-300">
         <h4 class="font-bold text-2xl md:text-2xl lg:text-2xl font-heading text-gray-900 ">
           2011 ~ 2020
         </h4>
-    </div>
-    {% for obj in 1120data %}
+    </div> {% endcomment %}
+
       
       {% comment %} section start {% endcomment %}
-        <div class=' pt-6'>
+        {% comment %} <div class=' pt-6'>
           <div class="rounded-xl border p-5 shadow-md bg-white">
             <div class="flex w-full items-center justify-between border-b pb-3">
               <div class="flex items-center space-x-3"></div>
@@ -353,77 +322,21 @@
               <div class="mb-3 text-xl font-bold">{{forloop.counter}}) {{obj.title}}</div>
             </div>
       
-            <div>
-              <div class="flex items-end justify-end text-slate-500">
-                <div class="flex space-x-2 md:space-x-8">
-                  <section class="flex justify-center items-start">
-                    {% if obj.link %}
-                    <a href="{{obj.link}}">
-                      <button class="py-1 px-4 bg-blue-500 text-white rounded text shadow-xl">Link</button>
-                    </a>
-                    {% else %}
-                    <a href="{{obj.link}}">
-                      <button class="py-1 px-4 bg-gray-500 text-white rounded text shadow-xl" disabled>Link</button>
-                    </a>
-                    {% endif %}
-                  </section>
-                  <section class="flex justify-center items-start">
-                    {% if obj.file %}
-                    <a href="{{obj.file.url}}" download>
-                      <button class="py-1 px-4 bg-red-300 text-white rounded text shadow-xl">File</button>
-                    </a>
-                    {% else %}
-                    <a href="#">
-                      <button class="py-1 px-4 bg-gray-500 text-white rounded text shadow-xl" disabled>File</button>
-                    </a>
-                    {% endif %}
-                  </section>
-                  
-                  <section class="flex justify-center items-start">
-                    <button onclick="document.getElementById('{{obj.id}}').showModal()" id="btn" class="py-1 px-4 bg-purple-500 text-white rounded text shadow-xl">detail</button>
-                  </section>
-                </div>
-              </div>
-            </div>
+            
           </div>
-        </div>
+        </div> {% endcomment %}
     {% comment %} section end {% endcomment %}
-      <dialog id="{{obj.id}}" class="h-auto w-11/12 md:w-1/2 p-5  bg-white rounded-md ">
-      
-        <div class="flex flex-col w-full h-auto ">
-          <!-- Header -->
-          <div class="flex w-full h-auto justify-center items-center pl-16">
-            <div class="flex w-10/12 h-auto py-3 justify-center items-center text-2xl font-bold">
-              {{obj.title}} Detail
-            </div>
-            <div onclick="document.getElementById('{{obj.id}}').close();" class="flex w-1/12 h-auto justify-center cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </div>
-            <!--Header End-->
-          </div>
-          <!-- Modal Content-->
-          <div class="flex w-full h-auto py-10 px-2 justify-center items-center bg-gray-200 rounded text-center text-gray-500">
-            {{obj.detail|safe}}
-          </div>
-          <!-- End of Modal Content-->
-    
-        </div>
-      </dialog>      
-    {% endfor %}
+
 
     <!--00~10 data-->
-    <div class="text-left pt-10 pb-3 border-b-4 border-gray-300">
+    {% comment %} <div class="text-left pt-10 pb-3 border-b-4 border-gray-300">
         <h4 class="font-bold text-2xl md:text-2xl lg:text-2xl font-heading text-gray-900 ">
           2000 ~ 2010
         </h4>
-      </div>
-    {% for obj in 0010data %}
+      </div> {% endcomment %}
       
       {% comment %} section start {% endcomment %}
-        <div class=' pt-6'>
+        {% comment %} <div class=' pt-6'>
           <div class="rounded-xl border p-5 shadow-md bg-white">
             <div class="flex w-full items-center justify-between border-b pb-3">
               <div class="flex items-center space-x-3"></div>
@@ -447,66 +360,11 @@
               <div class="mb-3 text-xl font-bold">{{forloop.counter}}) {{obj.title}}</div>
             </div>
       
-            <div>
-              <div class="flex items-end justify-end text-slate-500">
-                <div class="flex space-x-2 md:space-x-8">
-                  <section class="flex justify-center items-start">
-                    {% if obj.link %}
-                    <a href="{{obj.link}}">
-                      <button class="py-1 px-4 bg-blue-500 text-white rounded text shadow-xl">Link</button>
-                    </a>
-                    {% else %}
-                    <a href="{{obj.link}}">
-                      <button class="py-1 px-4 bg-gray-500 text-white rounded text shadow-xl" disabled>Link</button>
-                    </a>
-                    {% endif %}
-                  </section>
-                  <section class="flex justify-center items-start">
-                    {% if obj.file %}
-                    <a href="{{obj.file.url}}" download>
-                      <button class="py-1 px-4 bg-red-300 text-white rounded text shadow-xl">File</button>
-                    </a>
-                    {% else %}
-                    <a href="#">
-                      <button class="py-1 px-4 bg-gray-500 text-white rounded text shadow-xl" disabled>File</button>
-                    </a>
-                    {% endif %}
-                  </section>
-                  
-                  <section class="flex justify-center items-start">
-                    <button onclick="document.getElementById('{{obj.id}}').showModal()" id="btn" class="py-1 px-4 bg-purple-500 text-white rounded text shadow-xl">detail</button>
-                  </section>
-                </div>
-              </div>
-            </div>
+           
           </div>
-        </div>
+        </div> {% endcomment %}
     {% comment %} section end {% endcomment %}
-      <dialog id="{{obj.id}}" class="h-auto w-11/12 md:w-1/2 p-5  bg-white rounded-md ">
-      
-        <div class="flex flex-col w-full h-auto ">
-          <!-- Header -->
-          <div class="flex w-full h-auto justify-center items-center pl-16">
-            <div class="flex w-10/12 h-auto py-3 justify-center items-center text-2xl font-bold">
-              {{obj.title}} Detail
-            </div>
-            <div onclick="document.getElementById('{{obj.id}}').close();" class="flex w-1/12 h-auto justify-center cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </div>
-            <!--Header End-->
-          </div>
-          <!-- Modal Content-->
-          <div class="flex w-full h-auto py-10 px-2 justify-center items-center bg-gray-200 rounded text-center text-gray-500">
-            {{obj.detail|safe}}
-          </div>
-          <!-- End of Modal Content-->
-    
-        </div>
-      </dialog>      
-    {% endfor %}
+
 
 
 

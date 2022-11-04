@@ -74,9 +74,10 @@
         <!-- Loading screen -->
         <div
           x-ref="loading"
-          class="fixed inset-0 z-50 flex items-center justify-center text-2xl font-en text-white bg-indigo-800"
+          class="fixed inset-0 z-50 flex items-center justify-center text-2xl font-en text-black"
+          style = "background-color : rgb(255,255,255)"
         >
-          Loading.....
+          {% comment %} Loading {% endcomment %}
         </div>
 
         <!-- Sidebar -->
@@ -478,7 +479,7 @@
               <!-- active classes 'bg-indigo-100 dark:bg-indigo-600' -->
                   <a
                     href="#"
-                    @click="$event.preventDefault(); open = !open"
+                    {% comment %} @click="$event.preventDefault(); open = !open" {% endcomment %}
                     class="flex items-center p-2  transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600"
                     :class="{ 'bg-indigo-100 dark:bg-indigo-600': isActive || open }"
                     role="button"

@@ -163,26 +163,16 @@ class PublictionsView(ListView):
         context = super().get_context_data(**kwargs)
         if self.kwargs['category'] == 'default':
             data = Publications.objects.all()
-            context['0010data'] = Publications.objects.filter(
-                date__gte=date(2000, 1, 1), date__lte=date(2010, 12, 31))
-            context['1120data'] = Publications.objects.filter(
-                date__gte=date(2011, 1, 1), date__lte=date(2020, 12, 31)
-            )
         else:
             if self.kwargs['category'] in ('International Papers', 'International Conference', 'Domestic Papers', 'Domestic Conference', 'Patents'):
                 data = Publications.objects.filter(
                     category=self.kwargs['category'])
-                context['0010data'] = Publications.objects.filter(
-                    category=self.kwargs['category'], date__gte=date(2000, 1, 1), date__lte=date(2010, 12, 31))
-                context['1120data'] = Publications.objects.filter(
-                    category=self.kwargs['category'], date__gte=date(2011, 1, 1), date__lte=date(2020, 12, 31)
-                )
             else:
                 raise Http404
         sub = set()
 
         l = []
-        preprocessing = data.filter(date__gte=date(2021, 1, 1))
+        preprocessing = data
         for i in preprocessing:
             new = False
             if i.date.year not in sub:

@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- component -->
+  {% comment %} <section class="max-w-full mx-auto px-4 sm:px-6 lg:px-4 pb-12">
+    <div class="text-center py-10 ">
+      <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
+        PH.D
+      </h1>
+    </div>
+    <!-- component -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- component -->
+      {% for obj in PH_D %}
+        <a href="{% url 'teamDetail' obj.id %}">
+          <div class="font-sans h-96 w-full flex flex-row justify-center items-center">
+            <div class="card w-full mx-auto bg-white shadow-xl hover:shadow">
+              <img class="w-32 mx-auto rounded-full -mt-20 border-8 border-white" src="{{obj.image.url}}" alt="">
+              <div class="text-center mt-2 text-3xl font-medium">{{obj.name}}</div>
+              <div class="text-center mt-2 font-light text-sm">@{{obj.position}}</div>
+              <div class="text-center font-normal text-base pt-5">Education</div>
+              <div class="px-6 text-center mt-2 font-light text-sm">
+                <p>
+                  {{obj.headerEx}}
+                </p>
+              </div>
+              <hr class="mt-8">
+              <div class="flex p-4">
+                <div class="w-1/2 text-center text-sm">
+                  <span class="font-bold">Phone</span>
+                  {{obj.phone}}
+                </div>
+                <div class="w-0 border border-gray-300 "></div>
+                <div class="w-1/2 text-center text-sm">
+                  {{obj.email}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+
+    </div>
+  </section> {% endcomment %}
+  <section class="max-w-full mx-auto px-4 sm:px-6 lg:px-4 pb-12">
+    <div class="text-center py-10 ">
+      <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
+        PH.D Student
+      </h1>
+    </div>
+    <!-- component -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- component -->
+      {% for obj in PH_D_Student %}
+        <a href="{% url 'teamDetail' obj.id %}">
+          <div class="font-sans h-96 w-full flex flex-row justify-center items-center">
+            <div class="card w-full mx-auto bg-white shadow-xl hover:shadow">
+              <img class="w-32 mx-auto rounded-full -mt-20 border-8 border-white" src="{{obj.image.url}}" alt="">
+              <div class="text-center mt-2 text-3xl font-medium">{{obj.name}}</div>
+              <div class="text-center mt-2 font-light text-sm">@{{obj.position}}</div>
+              <div class="text-center font-normal text-base pt-5">Education</div>
+              <div class="px-6 text-center mt-2 font-light text-sm">
+                <p>
+                  {{obj.headerEx}}
+                </p>
+              </div>
+              <hr class="mt-8">
+              <div class="flex p-4">
+                <div class="w-1/2 text-center text-sm">
+                  <span class="font-bold">Phone</span>
+                  {{obj.phone}}
+                </div>
+                <div class="w-0 border border-gray-300 "></div>
+                <div class="w-1/2 text-center text-sm">
+                  {{obj.email}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+
+    </div>
+  </section>
+  <section class="max-w-full mx-auto px-4 sm:px-6 lg:px-4 pb-12">
+    <div class="text-center py-10 ">
+      <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
+        Post_Graduate
+      </h1>
+    </div>
+    <!-- component -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- component -->
+      {% for obj in Post_Graduate %}
+        <a href="{% url 'teamDetail' obj.id %}">
+          <div class="font-sans h-96 w-full flex flex-row justify-center items-center">
+            <div class="card w-full mx-auto bg-white shadow-xl hover:shadow">
+              <img class="w-32 mx-auto rounded-full -mt-20 border-8 border-white" src="{{obj.image.url}}" alt="">
+              <div class="text-center mt-2 text-3xl font-medium">{{obj.name}}</div>
+              <div class="text-center mt-2 font-light text-sm">@{{obj.position}}</div>
+              <div class="text-center font-normal text-base pt-5">Education</div>
+              <div class="px-6 text-center mt-2 font-light text-sm">
+                <p>
+                  {{obj.headerEx}}
+                </p>
+              </div>
+              <hr class="mt-8">
+              <div class="flex p-4">
+                <div class="w-1/2 text-center text-sm">
+                  <span class="font-bold">Phone</span>
+                  {{obj.phone}}
+                </div>
+                <div class="w-0 border border-gray-300 "></div>
+                <div class="w-1/2 text-center text-sm">
+                  {{obj.email}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+
+    </div>
+  </section>
+  <section class="max-w-full mx-auto px-4 sm:px-6 lg:px-4 pb-12">
+    <div class="text-center py-10 ">
+      <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
+        Undergraduate
+      </h1>
+    </div>
+    <!-- component -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- component -->
+      {% for obj in Undergraduate %}
+        <a href="{% url 'teamDetail' obj.id %}">
+          <div class="font-sans h-96 w-full flex flex-row justify-center items-center">
+            <div class="card w-full mx-auto bg-white shadow-xl hover:shadow">
+              <img class="w-32 mx-auto rounded-full -mt-20 border-8 border-white" src="{{obj.image.url}}" alt="">
+              <div class="text-center mt-2 text-3xl font-medium">{{obj.name}}</div>
+              <div class="text-center mt-2 font-light text-sm">@{{obj.position}}</div>
+              <div class="text-center font-normal text-base pt-5">Education</div>
+              <div class="px-6 text-center mt-2 font-light text-sm">
+                <p>
+                  {{obj.headerEx}}
+                </p>
+              </div>
+              <hr class="mt-8">
+              <div class="flex p-4">
+                <div class="w-1/2 text-center text-sm">
+                  <span class="font-bold">Phone</span>
+                  {{obj.phone}}
+                </div>
+                <div class="w-0 border border-gray-300 "></div>
+                <div class="w-1/2 text-center text-sm">
+                  {{obj.email}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+
+    </div>
+  </section>
+{% endblock content %}
