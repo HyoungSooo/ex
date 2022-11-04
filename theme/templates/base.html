@@ -33,11 +33,6 @@
     <!-- Tailwind -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
-      @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
-
-      .font-family-karla {
-        font-family: karla;
-      }
       .block_::-webkit-scrollbar {
       display: none;
       }
@@ -72,16 +67,17 @@
   </style>
   
 
-  <body class="bg-white font-family-karla ">
+  <body class="bg-white font-en">
     <!-- component -->
     <div x-data="setup()" x-init="$refs.loading.classList.add('hidden');" @resize.window="watchScreen()">
       <div class="flex h-screen antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light">
         <!-- Loading screen -->
         <div
           x-ref="loading"
-          class="fixed inset-0 z-50 flex items-center justify-center text-2xl font-semibold text-white bg-indigo-800"
+          class="fixed inset-0 z-50 flex items-center justify-center text-2xl font-en text-black"
+          style = "background-color : rgb(255,255,255)"
         >
-          Loading.....
+          {% comment %} Loading {% endcomment %}
         </div>
 
         <!-- Sidebar -->
@@ -252,7 +248,7 @@
 
               <!-- Links -->
               <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto">
-                <a href="{% url 'index' %}" class="flex items-center space-x-2 text-gary-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub">
+                <a href="{% url 'index' %}" class="flex items-center space-x-2 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white sub">
                   <span aria-hidden="true" class="p-2 rounded-lg">
                     <svg
                       class="w-6 h-6"
@@ -269,7 +265,7 @@
                       />
                     </svg>
                   </span>
-                  <span class ="ml-2 text-sm">Home</span>
+                  <span class ="ml-2 text-sm ">Home</span>
                 </a>
 
               <div x-data="{ isActive: false, open: false }">
@@ -277,7 +273,7 @@
                   <a
                     href="#"
                     @click="$event.preventDefault(); open = !open"
-                    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600"
+                    class="flex items-center p-2  transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600"
                     :class="{ 'bg-indigo-100 dark:bg-indigo-600': isActive || open }"
                     role="button"
                     aria-haspopup="true"
@@ -316,19 +312,19 @@
                 </a>
                 <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components">
                   <!-- active & hover classes 'text-gray-700 dark:text-light' -->
-                  <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                  <!-- inActive classes ' dark:' -->
 
                   <a
                     href="{% url 'RA'  %}"
                     role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                    class="block p-2 text-sm  transition-colors duration-200 rounded-md dark: dark:hover:text-light hover:text-gray-700"
                   >
                     Research Area
                   </a>
                   <a
                     href="{% url 'project' %}"
                     role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                    class="block p-2 text-sm  transition-colors duration-200 rounded-md dark: dark:hover:text-light hover:text-gray-700"
                   >
                     Projects
                   </a>
@@ -340,7 +336,7 @@
                   <a
                     href="#"
                     @click="$event.preventDefault(); open = !open"
-                    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600"
+                    class="flex items-center p-2  transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600"
                     :class="{ 'bg-indigo-100 dark:bg-indigo-600': isActive || open }"
                     role="button"
                     aria-haspopup="true"
@@ -379,36 +375,21 @@
                 </a>
                 <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components">
                   <!-- active & hover classes 'text-gray-700 dark:text-light' -->
-                  <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                  <!-- inActive classes ' dark:' -->
                   <a
                     href="{% url 'principle' 'default' %}"
                     role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                    class="block p-2 text-sm  transition-colors duration-200 rounded-md dark: dark:hover:text-light hover:text-gray-700"
                   >
                     Professors
                   </a>
                   <a
                     href="{% url 'team' 'PH.D Student' %}"
                     role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                    class="block p-2 text-sm  transition-colors duration-200 rounded-md dark: dark:hover:text-light hover:text-gray-700"
                   >
-                    PH.D Students
-                  </a>
-                  <a
-                    href="{% url 'team' 'Post Graduate' %}"
-                    role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
-                  >
-                    Post Graduate
-                  </a>
-                  <a
-                    href="{% url 'team' 'Undergraduate' %}"
-                    role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
-                  >
-                    Students
-                  </a>
-
+                    Members
+                </a>
                 </div>
               </div>
               <div x-data="{ isActive: false, open: false }">
@@ -416,7 +397,7 @@
                   <a
                     href="#"
                     @click="$event.preventDefault(); open = !open"
-                    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600"
+                    class="flex items-center p-2  transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600"
                     :class="{ 'bg-indigo-100 dark:bg-indigo-600': isActive || open }"
                     role="button"
                     aria-haspopup="true"
@@ -455,39 +436,39 @@
                 </a>
                 <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components">
                   <!-- active & hover classes 'text-gray-700 dark:text-light' -->
-                  <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                  <!-- inActive classes ' dark:' -->
                   <a
                     href="{% url 'journal' 'default' %}"
                     role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                    class="block p-2 text-sm  transition-colors duration-200 rounded-md dark: dark:hover:text-light hover:text-gray-700"
                   >
                     International Papers
                   </a>
                   <a
                     href="{% url 'journal' 'default' %}"
                     role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                    class="block p-2 text-sm  transition-colors duration-200 rounded-md dark: dark:hover:text-light hover:text-gray-700"
                   >
                     International Conference
                   </a>
                   <a
                     href="{% url 'journal' 'default' %}"
                     role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                    class="block p-2 text-sm  transition-colors duration-200 rounded-md dark: dark:hover:text-light hover:text-gray-700"
                   >
                     Domestic Papers
                   </a>
                   <a
                     href="{% url 'journal' 'default' %}"
                     role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                    class="block p-2 text-sm  transition-colors duration-200 rounded-md dark: dark:hover:text-light hover:text-gray-700"
                   >
                     Domestic Conference
                   </a>
                   <a
                     href="{% url 'journal' 'default' %}"
                     role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                    class="block p-2 text-sm  transition-colors duration-200 rounded-md dark: dark:hover:text-light hover:text-gray-700"
                   >
                     Patents
                   </a>
@@ -498,8 +479,8 @@
               <!-- active classes 'bg-indigo-100 dark:bg-indigo-600' -->
                   <a
                     href="#"
-                    @click="$event.preventDefault(); open = !open"
-                    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600"
+                    {% comment %} @click="$event.preventDefault(); open = !open" {% endcomment %}
+                    class="flex items-center p-2  transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600"
                     :class="{ 'bg-indigo-100 dark:bg-indigo-600': isActive || open }"
                     role="button"
                     aria-haspopup="true"
@@ -538,25 +519,25 @@
                 </a>
                 <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components">
                   <!-- active & hover classes 'text-gray-700 dark:text-light' -->
-                  <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                  <!-- inActive classes ' dark:' -->
                   <a
                     href="{% url 'News' 'all' %}"
                     role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                    class="block p-2 text-sm  transition-colors duration-200 rounded-md dark: dark:hover:text-light hover:text-gray-700"
                   >
                     Borad
                   </a>
                   <a
                     href="{% url 'Photo' 'a' %}"
                     role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                    class="block p-2 text-sm  transition-colors duration-200 rounded-md dark: dark:hover:text-light hover:text-gray-700"
                   >
                     Photo
                   </a>
                   <a
                     href="{% url 'News' 'Os' %}"
                     role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                    class="block p-2 text-sm  transition-colors duration-200 rounded-md dark: dark:hover:text-light hover:text-gray-700"
                   >
                     Outstanding Performance
                   </a>
@@ -632,7 +613,7 @@
   type="button"
   data-mdb-ripple="true"
   data-mdb-ripple-color="light"
-  class="inline-block p-3 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out  bottom-5 right-5 fixed rotate-180"
+  class="inline-block p-3 bg-red-600 text-white font-medium font-en text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out  bottom-5 right-5 fixed rotate-180"
   id="btn-back-to-top"
 >
   <svg

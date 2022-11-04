@@ -5,9 +5,21 @@ from django.http import Http404
 
 from django.views.generic import View, ListView, DetailView, TemplateView
 
-from core.models import Post, Purpose, Professor, Timeline, AboutUs, Publications, ResearchArena, Project, PictureCa, ProfTimeline, IndexResearch, MembersTimeline, tasks
+from core.models import Post, Purpose, Professor, Timeline, AboutUs, Publications, ResearchArena, Project, PictureCa, ProfTimeline, IndexResearch, MembersTimeline, tasks, PhotoVedio
 
 # Create your views here.
+
+POSITION = (
+    ('PH_D_Student', 'PH.D Student'),
+    ('Post_Graduate', 'Post Graduate'),
+    ('Undergraduate', 'Undergraduate'),
+)
+
+
+class PhotoVedioView(ListView):
+    model = PhotoVedio
+    template_name = 'Photo.html'
+    context_object_name = 'photo'
 
 
 class AboutView(ListView):
@@ -20,7 +32,8 @@ class AboutView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = self.kwargs['category']
+        for key, value in POSITION:
+            context[key] = AboutUs.objects.filter(position=value)
         return context
 
 # class PublicationsView(ListView):
@@ -73,7 +86,7 @@ class PostListView(ListView):
     model = Post
     template_name = 'News.html'
     context_object_name = 'posts'
-    paginate_by = 20
+    paginate_by = 10
 
     def get_queryset(self):
         if self.kwargs['category'] == 'news':
@@ -158,14 +171,8 @@ class PublictionsView(ListView):
                 raise Http404
         sub = set()
 
-        context['0010data'] = Publications.objects.filter(
-            date__gte=date(2000, 1, 1), date__lte=date(2010, 12, 31))
-        context['1120data'] = Publications.objects.filter(
-            date__gte=date(2011, 1, 1), date__lte=date(2020, 12, 31)
-        )
-
         l = []
-        preprocessing = data.filter(date__gte=date(2021, 1, 1))
+        preprocessing = data
         for i in preprocessing:
             new = False
             if i.date.year not in sub:

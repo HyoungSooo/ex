@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+<style>
+  .scale {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .scale:hover img {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+  }
+</style>
+
+{% block content %}
+
+  <div class="px-4  mx-auto sm:max-w-xl md:max-w-full md:px-10 ">
+    <div class="p-1.5 w-full sm:w-auto overflow-hidden bg-white border rounded-lg ">
+      <div class="space-y-2 sm:space-y-0 sm:flex sm:-mx-1">
+        <a class="w-full px-4 py-1 text-white transition-colors duration-200 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40 LabBtn" href={% url 'post_list' 'default' %}>
+          All
+        </a>
+        <a class="w-full px-4 py-1 text-white transition-colors duration-200 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40 LabBtn" href={% url 'post_list' 'news' %}>
+          Photos
+        </a>
+        <a class="w-full px-4 py-1 text-white transition-colors duration-200 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40 LabBtn" href={% url 'post_list' 'news' %}>
+          Videos
+        </a>
+        <a class="w-full px-4 py-1 text-white transition-colors duration-200 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40 LabBtn" href={% url 'post_list' 'news' %}>
+          News
+        </a>
+
+        <a class="w-full px-4 py-1 text-white transition-colors duration-200 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40 AlBtn" href={% url 'post_list' 'research' %}>
+          Research
+        </a>
+
+      </div>
+    </div>
+    <section class="px-4 py-24 mx-auto ">
+
+      <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 ">
+        {% for obj in posts %}
+          <div class='pp overflow-hidden  hover:scale-110 hover:underline'>
+            <a href="{% url 'post_detail' obj.id %}" class="">
+              <img src="{{obj.thumbnail.url}}" class="object-cover w-full h-56 mb-5 bg-center rounded z-0" alt="Kutty" loading="lazy"/>
+            </a>
+            <h2 class="mb-2 text-lg font-semibold text-gray-900">
+              <a href="#" class="overflow-ellipsis">{{obj.title}}</a>
+            </h2>
+            <p class="mb-3 text-sm font-normal text-gray-500">
+              {{obj.description}}
+            </p>
+            <p class="mb-3 text-sm font-normal text-gray-500">
+              <a href="#" class="font-medium text-gray-900">admin</a>
+              {{obj.created_at|date:'d F, Y'}}
+            </p>
+          </div>
+        {% endfor %}
+
+      </section>
+      <div class="flex flex-col items-center justify-center mt-20 space-x-0 space-y-2 md:space-x-2 md:space-y-0 md:flex-row mb-10">
+        {% if page_obj.has_previous %}
+          <a href="?page={{page_obj.previous_page_number}}" class="w-full rounded-full btn btn-light btn-xl md:w-auto">Previous Page</a>
+        {% endif %}
+        {% if page_obj.has_next %}
+          <a href="?page={{page_obj.next_page_number}}" class="w-full rounded-full btn btn-light btn-xl md:w-auto">Next Page</a>
+        {% endif %}
+      </div>
+
+    </div>
+
+    <!-- component -->
+
+  {% endblock content %}
+
+  <script></script>
